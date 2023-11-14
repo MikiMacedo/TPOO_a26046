@@ -20,7 +20,7 @@ namespace TPOO_a26046
 
         public List<RegistoEstacionamento> HistoricoParque { get; set; }
 
-        // Registo do Sector
+        // Registo do Setor
         public SetorParque(string nomeSetor, int capacidade, Dictionary<string, decimal> pagamentoHora, List<string> tipoVeiculosPermitidos)
         {
             NomeSetor = nomeSetor;

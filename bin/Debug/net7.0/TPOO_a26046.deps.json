@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "TPOO_a26046/1.0.0": {
+        "runtime": {
+          "TPOO_a26046.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TPOO_a26046/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

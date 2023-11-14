@@ -19,5 +19,12 @@ namespace TPOO_a26046
             SetoresParque = new List<SetorParque>();
         }
 
+        /// Adiciona o novo Setor
+        public void AdicionaSetor(SetorParque setorAd)
+        {
+            SetoresParque.Add(setorAd);
+        }
+
+
     }
- }
+}
