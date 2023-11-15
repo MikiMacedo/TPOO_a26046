@@ -1,6 +1,9 @@
-/* Trabalho de Programação Orientada Por objectos 
- * Miguel António Costa Macedo, aluno 26046
- * Fase 1 TPOO_a26046 - Veiculos - Veiculo.cs*/
+/**
+ * \brief Trabalho de Programação Orientada Por objectos 
+ * \details Parque de Estacionamento de um Hospital
+ * \author Miguel António Costa Macedo, aluno 26046
+ * \file Veiculo.cs
+ */
 
 using System;
 using System.Collections.Generic;
