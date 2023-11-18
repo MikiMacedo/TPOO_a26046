@@ -3,21 +3,21 @@
   <Class Name="TPOO_a26046.ParqueHospitalar">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAACAAAAAAAAAAAAAEAAAAAA=</HashCode>
       <FileName>ParqueHospitalar.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TPOO_a26046.Program">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAwAAAABCAIAAABAAAAAAAAAAAABAABBAIAAAA=</HashCode>
+      <HashCode>AAAAAAAwAAAABCAIBAABAAAAAAAAAAAABAAhBAIAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TPOO_a26046.SetorParque">
     <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAQAgAAAAABAAAAgAIAAAAAAAAAAAIAA=</HashCode>
+      <HashCode>AAAEAAAAAAAACQAgAAAAABCAAAgAIAAAIAAAAAAAIAA=</HashCode>
       <FileName>SetoresParque.cs</FileName>
     </TypeIdentifier>
   </Class>

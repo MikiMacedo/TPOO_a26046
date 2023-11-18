@@ -20,7 +20,7 @@ namespace TPOO_a26046
         public DateTime Saida { get; set; }
         public decimal TaxaEstacionamento { get; set; }
 
-        //Registo do Estacionamento do Veículo
+        // Dados finais do Estacionamento do Veículo
         public RegistoEstacionamento(Veiculo veiculo, DateTime entrada, DateTime saida, decimal taxaEstacionamento)
         {
             Veiculo = veiculo;
@@ -28,7 +28,9 @@ namespace TPOO_a26046
             Saida = saida;
             TaxaEstacionamento = taxaEstacionamento;
         }
+
+       
     }
- 
 }
+
 

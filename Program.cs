@@ -28,7 +28,7 @@ namespace TPOO_a26046
 
             while (true)
             {
-                // Estatística de todos os setores existentes
+                /** Estatística de todos os setores existentes no ecrão inicial */
                 Console.Clear();
                 Console.WriteLine("\n+----------------------------------------------------------------+");
                 Console.WriteLine("|    Estatísticas do Parque de Estacionamento do Hospital        |");
@@ -43,11 +43,25 @@ namespace TPOO_a26046
                 }
                 else
                 {
-                    // Faz a tabela com os dados dos setores, os valores são para definir o tamanho na tabela, negativos alinhados à esquerda, positivos alinhados à direita
-
+                    string setorEstaCheio;
+                    foreach (var nomeSetor in parqueHospital.SetoresParque) /// Mostra tabela dos setores existentes
+                    {
+                        ///Transformar um valor booleano em "Sim" ou "Não" para indicar se o setor está cheio
+                        if (nomeSetor.SetorCheio())
+                        {
+                            setorEstaCheio = "Sim";
+                        }
+                        else
+                        {
+                            setorEstaCheio = "Não";
+                        }
+                        /// Faz a tabela com os dados dos setores, os valores são para definir o tamanho na tabela, negativos alinhados à esquerda, positivos alinhados à direita
+                        Console.WriteLine($"|   {nomeSetor.NomeSetor,-20} |       {nomeSetor.Veiculos.Count,16} | {setorEstaCheio,6}       |");
+                    }
+                    Console.WriteLine("+----------------------------------------------------------------+");
                 }
 
-                // Menu do Sistema de Parqueamento
+                /** Menu do Sistema de Parqueamento */
                 Console.WriteLine("\n+----------------------------------------------------------------+");
                 Console.WriteLine("|    Sistema de Gestão do Parque de Estacionamento do Hospital   |");
                 Console.WriteLine("+---+------------------------------------------------------------+");
@@ -86,7 +100,7 @@ namespace TPOO_a26046
             }
         }
 
-        // Menu de Gestão do Sistema do Parque
+        /** Menu de Gestão do Sistema do Parque */
         static void MenuGerirParque(ParqueHospitalar parqueHospital, List<string> TiposDeVeiculos)
         {
             while (true)
@@ -143,7 +157,7 @@ namespace TPOO_a26046
             }
         }
 
-        // Menu do Utilizador do Parque (Estacionar e Remover o veículo no Parque)
+        /** Menu do Utilizador do Parque (Estacionar e Remover o veículo no Parque) */
         static void MenuUtilizador(ParqueHospitalar parqueHospital, List<string> TiposDeVeiculos)
         {
             while (true)
@@ -165,17 +179,21 @@ namespace TPOO_a26046
                 {
                     case '1':
                         /// Estacionar o veiculo no Parque
-
+                        Console.WriteLine();
+                        EstacionarVeiculo(parqueHospital, TiposDeVeiculos);
+                        Console.WriteLine();
+                        Console.Write("Carregue em qualquer tecla para continuar...");
+                        Console.ReadKey();
                         break;
 
                     case '2':
                         /// Remover o veículo do estacionamento do Parque e pagar Estacionamento
-                        
+                        Console.WriteLine();
+                        RemoverVeiculo(parqueHospital);
                         break;
 
                     case '0':
                         /// Volta ao Menu Principal
-                        
                         return;
 
                     default:
@@ -184,7 +202,7 @@ namespace TPOO_a26046
             }
         }
 
-        // Menu para Mostrar as Estatísticas do Parque
+        /** Menu para Mostrar as Estatísticas do Parque */
         static void MenuEstatisticas(ParqueHospitalar parqueHospital)
         {
             while (true)
@@ -230,7 +248,6 @@ namespace TPOO_a26046
 
                     case '0':
                         /// Voltar ao Menu Principal
-
                         return;
 
                     default:
@@ -239,6 +256,7 @@ namespace TPOO_a26046
             }
         }
 
+        /** Menu das Estatísticas dos Veículos */
         static void MenuEstatisticasVeiculos(ParqueHospitalar parqueHospital)
         {
             Console.Clear();
@@ -277,7 +295,7 @@ namespace TPOO_a26046
             }
         }
 
-        /// Adicionar os setores
+        /** Adicionar um novo setor */
         static void AdicionarSetor(ParqueHospitalar parqueHospital, List<string> TiposDeVeiculos)
         {
             Console.Clear();
@@ -339,7 +357,7 @@ namespace TPOO_a26046
         }
 
 
-        /// Remover os setores
+        /** Remover um dos setores que existe */
         static void RemoverSetor(ParqueHospitalar parqueHospital)
         {
             bool verificaSetor = false;
@@ -393,6 +411,7 @@ namespace TPOO_a26046
             }
         }
 
+        /** Alterar um dos setores existentes */
         static void AlterarSetor(ParqueHospitalar parqueHospital, List<string> TiposDeVeiculos)
         {
             Console.Clear();
@@ -475,7 +494,7 @@ namespace TPOO_a26046
         }
 
 
-        ///Definir os tipos de Veículos Permitidos para estacionar
+        /** PAra definir os tipos de Veículos Permitidos para estacionar no setor */
         static List<string> RetiraTipoVeiculosPermitidos(List<string> tiposVeiculo)
         {
             Console.WriteLine();
@@ -520,7 +539,7 @@ namespace TPOO_a26046
 
         }
 
-        /// Definir o Pagamento Hora para determinado tipo de Veículo
+        /** Para definir o Pagamento Hora para determinado tipo de Veículo no setor */
         static Dictionary<string, decimal> RetiraPagamentoHora(List<string> tipoVeiculosPermitidos)
         {
             Dictionary<string, decimal> pagamentoHora = new Dictionary<string, decimal>();
@@ -541,6 +560,91 @@ namespace TPOO_a26046
             }
 
             return pagamentoHora;
+        }
+
+        /// Inicio do Estacionamento de um determinado Veículo
+        static void EstacionarVeiculo(ParqueHospitalar parqueHospital, List<string> TiposDeVeiculos)
+        {
+            while (true)
+            {
+                Console.WriteLine();
+                Console.Write("Coloque a Matrícula: ");
+                string matriculaVeiculo = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(matriculaVeiculo))
+                {
+                    if (parqueHospital.VerificarPorMatriculasExistentes(matriculaVeiculo))
+                    {
+                        Console.WriteLine("Essa Matrícula já esta estacionada. Verifique e volte a colocar a Matrícula correta");
+                        continue;
+                    }
+
+                    Console.WriteLine("Tipo de Veículo dos Existentes:");
+                    for (int i = 0; i < TiposDeVeiculos.Count; i++)
+                    {
+                        Console.WriteLine((i + 1) + " - " + TiposDeVeiculos[i]);
+                    }
+                    Console.Write("Escolha o Tipo de Veiculo: ");
+                    if (int.TryParse(Console.ReadLine(), out int escolhaTipoVeiculo) && escolhaTipoVeiculo >= 1 && escolhaTipoVeiculo <= TiposDeVeiculos.Count)
+                    {
+                        string veiculoTipo = TiposDeVeiculos[escolhaTipoVeiculo - 1];
+
+                        Console.WriteLine("Setores de Estacionamento Disponíveis: ");
+                        for (int i = 0; i < parqueHospital.SetoresParque.Count; i++)
+                        {
+                            Console.WriteLine((i + 1) + " - " + parqueHospital.SetoresParque[i].NomeSetor);
+                        }
+                        Console.Write("Escolha o Setor em que deseja estacionar: ");
+                        if (int.TryParse(Console.ReadLine(), out int escolhaSetor) && escolhaSetor >= 1 && escolhaSetor <= parqueHospital.SetoresParque.Count)
+                        {
+                            Veiculo veiculo = new Veiculo
+                            {
+                                MatriculaVeiculo = matriculaVeiculo,
+                                VeiculoTipo = veiculoTipo,
+                            };
+                            parqueHospital.SetoresParque[escolhaSetor - 1].EstacionaVeiculo(veiculo);
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Número de Setor Inválido");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Tipo veiculo inválido");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("O Campo da Matrícula não pode estar vazio, adicione a Matrícula");
+                }
+            }
+        }
+
+        /// Fim do Estacionamento de um determinado veículo
+        static void RemoverVeiculo(ParqueHospitalar parqueHospital)
+        {
+            while (true)
+            {
+                Console.WriteLine();
+                Console.Write("Matrícula do veiculo a remover: ");
+                string matriculaRemove = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(matriculaRemove))
+                {
+                    foreach (var setor in parqueHospital.SetoresParque)
+                    {
+                        setor.FimEstacionamentoVeiculo(matriculaRemove);
+                    }
+                    Console.WriteLine();
+                    Console.Write("Carregue em qualquer tecla para continuar...");
+                    Console.ReadKey();
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("O Campo da Matrícula não pode estar vazio, adicione a Matrícula");
+                }
+            }
         }
 
     }
