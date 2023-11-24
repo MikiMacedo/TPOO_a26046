@@ -122,6 +122,12 @@ namespace TPOO_a26046
             }
         }
 
+        /** Calcula a soma das taxas de estacionamento pagas por setor */
+        public decimal CalcularTotalTaxaEstacionamento()
+        {
+            return HistoricoParque.Sum(registo => registo.TaxaEstacionamento);
+        }
+
     }
     
 }

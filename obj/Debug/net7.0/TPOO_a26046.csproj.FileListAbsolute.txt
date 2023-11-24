@@ -12,3 +12,4 @@ C:\Users\migue\OneDrive\Documentos\GitHub\TPOO_a26046\obj\Debug\net7.0\refint\TP
 C:\Users\migue\OneDrive\Documentos\GitHub\TPOO_a26046\obj\Debug\net7.0\TPOO_a26046.pdb
 C:\Users\migue\OneDrive\Documentos\GitHub\TPOO_a26046\obj\Debug\net7.0\TPOO_a26046.genruntimeconfig.cache
 C:\Users\migue\OneDrive\Documentos\GitHub\TPOO_a26046\obj\Debug\net7.0\ref\TPOO_a26046.dll
+C:\Users\migue\OneDrive\Documentos\GitHub\TPOO_a26046\obj\Debug\net7.0\TPOO_a26046.sourcelink.json

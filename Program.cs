@@ -227,7 +227,7 @@ namespace TPOO_a26046
                 {
                     case '1':
                         /// Estatísticas do Setor
-
+                        EstatisticasSetor(parqueHospital);
                         break;
 
                     case '2':
@@ -237,7 +237,7 @@ namespace TPOO_a26046
 
                     case '3':
                         /// Histórico de Estacionamento por Matrícula
-
+                        MostrarHistoricoVeiculo(parqueHospital);
                         break;
 
                     case '4':
@@ -647,6 +647,110 @@ namespace TPOO_a26046
             }
         }
 
+        /** Estatísticas por Setor, Nome, Capacidade, Veículos Estacionados, lugares vagos, se já se encontra cheio e total de pagamentos efetuados do setor */
+        static void EstatisticasSetor(ParqueHospitalar parqueHospital)
+        {
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("\n+--------------------------------------------------------------------------------+");
+            Console.WriteLine("|                           Estatísticas do Setor                                |");
+            Console.WriteLine("+--------------------------------------------------------------------------------+");
+            Console.WriteLine("|  Nome do Setor   | Capacidade | Estacionados | Vagos  | Cheio? | Receita Total |");
+            Console.WriteLine("+--------------------------------------------------------------------------------+");
+
+            if (parqueHospital.SetoresParque.Count == 0)
+            {
+                Console.WriteLine("|                   Ainda não Existem Setores de Estacionamento                  |");
+                Console.WriteLine("+--------------------------------------------------------------------------------+");
+                Console.WriteLine();
+                Console.Write("Carregue em qualquer tecla para seguir...");
+                Console.ReadKey();
+            }
+            else
+            {
+                string estaCheio;
+                foreach (var setorEstat in parqueHospital.SetoresParque)
+                {
+                    //Transformar um valor booleano em "Sim" ou "Não" para indicar se o sector está cheio
+                    if (setorEstat.SetorCheio())
+                    {
+                        estaCheio = "Sim";
+                    }
+                    else
+                    {
+                        estaCheio = "Não";
+                    }
+                    Console.WriteLine($"| {setorEstat.NomeSetor,-16} | {setorEstat.Capacidade,10} | {setorEstat.Veiculos.Count,12} | {setorEstat.Capacidade - setorEstat.Veiculos.Count,6} | {estaCheio,-6} | {setorEstat.CalcularTotalTaxaEstacionamento(),13:0.00} |");
+
+                }
+                Console.WriteLine("+--------------------------------------------------------------------------------+");
+                Console.WriteLine();
+                Console.Write("Carregue em qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+        }
+
+        /** Listagem dos Histórico de Estacionamento de determinado veículo (matrícula) */
+        static void MostrarHistoricoVeiculo(ParqueHospitalar parqueHospital)
+        {
+            Console.Clear();
+            if (parqueHospital.SetoresParque.Count == 0)
+            {
+                Console.WriteLine();
+                Console.WriteLine("\n+----------------------------------------+");
+                Console.WriteLine("|      Histórico de Estacionamento       |");
+                Console.WriteLine("+----------------------------------------+");
+                Console.WriteLine("| Não existem Setores de Estacionamento  |");
+                Console.WriteLine("+----------------------------------------+");
+                Console.WriteLine();
+                Console.Write("Carregue em qualquer tecla para seguir...");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.Write("Entre a Matrícula: ");
+                string matriculaVeiculoHist = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(matriculaVeiculoHist))
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("\n+-----------------------------------------------------------------------+");
+                    Console.WriteLine($"| Histórico de Estacionamento do veículo com matrícula: {matriculaVeiculoHist,-15} |");
+                    Console.WriteLine("+-----------------------------------------------------------------------+");
+                    Console.WriteLine("| Nome do Setor  |       Entrada       |        Saida       | Pagamento |");
+                    Console.WriteLine("+-----------------------------------------------------------------------+");
+
+                    foreach (var setorEst in parqueHospital.SetoresParque)
+                    {
+                        foreach (var registoEst in setorEst.HistoricoParque)
+                        {
+                            if (registoEst.Veiculo.MatriculaVeiculo == matriculaVeiculoHist)
+                            {
+                                foreach (var setorEstat in parqueHospital.SetoresParque)
+                                {
+                                    Console.WriteLine($"| {setorEst.NomeSetor,-14} | {registoEst.Entrada,14} | {registoEst.Saida,14} | {registoEst.TaxaEstacionamento,7:0.00}€ |");
+
+                                }
+                                Console.WriteLine("+-----------------------------------------------------------------------+");
+                            }
+                            else
+                            {
+                                Console.WriteLine("|     Sem Histórico de Estacionamento para a matrícula indicada         |");
+                                Console.WriteLine("+-----------------------------------------------------------------------+");
+                            }
+                        }
+
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("A matrícula não pode estar vazia");
+                }
+                Console.WriteLine();
+                Console.Write("Carregue em qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+        }
     }
 }
 
