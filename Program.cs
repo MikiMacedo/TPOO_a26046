@@ -264,7 +264,7 @@ namespace TPOO_a26046
             Console.WriteLine("\n+---------------------------------------------------------+");
             Console.WriteLine("|  Menu de Estatísticas dos Veículos                      |");
             Console.WriteLine("+---+-----------------------------------------------------+");
-            Console.WriteLine("| 1 |  Listar Todos os Veiculos                           |");
+            Console.WriteLine("| 1 |  Listar Todos os Veiculos Estacionados              |");
             Console.WriteLine("| 2 |  Listar Veiculos por Setor                          |");
             Console.WriteLine("| 0 |  Voltar ao Menu de Estatísticas                     |");
             Console.WriteLine("+---+-----------------------------------------------------+");
@@ -278,12 +278,12 @@ namespace TPOO_a26046
             {
                 case '1':
                     /// Lista todos os Veículos
-
+                    ListaTodosVeiculos(parqueHospital);
                     break;
 
                 case '2':
                     /// Lista os Veiculos por Setor
-
+                    ListaVeiculosPorSetor(parqueHospital);
                     break;
 
                 case '0':
@@ -784,6 +784,108 @@ namespace TPOO_a26046
                 Console.Write("Carregue em qualquer tecla para continuar...");
                 Console.ReadKey();
             }
+        }
+
+        /** Mostra todos os veículos Estacionados */
+        static void ListaTodosVeiculos(ParqueHospitalar parqueHospital)
+        {
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("\n+-----------------------------------------+");
+            Console.WriteLine("| Listagem dos Veículos no Estacionamento |");
+            Console.WriteLine("+-----------------+-----------------------+");
+            Console.WriteLine("|    Matrícula    |    Tipo de Veículo    |");
+            Console.WriteLine("+-----------------+-----------------------+");
+
+            int totalVeiculos = 0;
+            foreach (var setor in parqueHospital.SetoresParque)
+            {
+                totalVeiculos += setor.Veiculos.Count;
+                foreach (var veiculoListar in setor.Veiculos)
+                {
+                    Console.WriteLine($"| {veiculoListar.MatriculaVeiculo,-15} | {veiculoListar.VeiculoTipo,-21} |");
+                }
+
+            }
+            if (totalVeiculos == 0)
+            {
+                Console.WriteLine("|  Sem veículos estacionados nos Setores  |");
+            }
+            Console.WriteLine("+-----------------------------------------+");
+            Console.WriteLine();
+            Console.Write("Carregue em qualquer tecla para continuar...");
+            Console.ReadKey();
+        }
+
+        /** Mostra os veículos Estacionados por setor */
+        static void ListaVeiculosPorSetor(ParqueHospitalar parqueHospital)
+        {
+            Console.Clear();
+            if (parqueHospital.SetoresParque.Count == 0)
+            {
+                Console.WriteLine();
+                Console.WriteLine("\n+----------------------------------------+");
+                Console.WriteLine("|      Listagem Veículos por Setor       |");
+                Console.WriteLine("+----------------------------------------+");
+                Console.WriteLine("| Não existem Setores de Estacionamento  |");
+                Console.WriteLine("+----------------------------------------+");
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("\n+-----------------------------+");
+                Console.WriteLine("|    Setores para Escolher    |");
+                Console.WriteLine("+-------+---------------------+");
+                Console.WriteLine("| Opção |    Nome do Setor    |");
+                Console.WriteLine("+-------+---------------------+");
+                int opcaoI;
+                for (int i = 0; i < parqueHospital.SetoresParque.Count; i++)
+                {
+                    opcaoI = i + 1;
+
+                    Console.WriteLine($"| {opcaoI,5} | {parqueHospital.SetoresParque[i].NomeSetor,-19} |");
+                    Console.WriteLine("+-------+---------------------+");
+                }
+                Console.Write("Escolha o setor: ");
+
+                if (int.TryParse(Console.ReadLine(), out int escolhaSetor) && escolhaSetor >= 1 && escolhaSetor <= parqueHospital.SetoresParque.Count)
+                {
+                    var setorVeiculosEscolha = parqueHospital.SetoresParque[escolhaSetor - 1].Veiculos;
+
+                    if (setorVeiculosEscolha.Count == 0)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("\n+----------------------------------------+");
+                        Console.WriteLine("|      Listagem Veículos por Setor       |");
+                        Console.WriteLine("+----------------------------------------+");
+                        Console.WriteLine($"|  Sem veículos no Setor {parqueHospital.SetoresParque[escolhaSetor - 1].NomeSetor,-15} |");
+                        Console.WriteLine("+----------------------------------------+");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n+----------------------------------------+");
+                        Console.WriteLine($"| Listagem Veículos no {parqueHospital.SetoresParque[escolhaSetor - 1].NomeSetor,-17} |");
+                        Console.WriteLine("+-----------------+----------------------+");
+                        Console.WriteLine("|    Matrícula    |   Tipo de Veículo    |");
+                        Console.WriteLine("+-----------------+----------------------+");
+                        foreach (var veiculo in setorVeiculosEscolha)
+                        {
+                            Console.WriteLine($"| {veiculo.MatriculaVeiculo,-15} | {veiculo.VeiculoTipo,-20} |");
+                        }
+                        Console.WriteLine("+-----------------+----------------------+");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("+------------------------------------------+");
+                    Console.WriteLine("| Número de Setor Inválido ou inexistente  |");
+                    Console.WriteLine("+------------------------------------------+");
+                }
+            }
+            Console.WriteLine();
+            Console.Write("Carregue em qualquer tecla para seguir...");
+            Console.ReadKey();
         }
     }
 }
