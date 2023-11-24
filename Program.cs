@@ -708,39 +708,38 @@ namespace TPOO_a26046
             }
             else
             {
+                bool encontradaMatrícula = false;
                 Console.WriteLine();
                 Console.Write("Entre a Matrícula: ");
                 string matriculaVeiculoHist = Console.ReadLine();
                 if (!string.IsNullOrWhiteSpace(matriculaVeiculoHist))
                 {
                     Console.WriteLine();
-                    Console.WriteLine("\n+-----------------------------------------------------------------------+");
-                    Console.WriteLine($"| Histórico de Estacionamento do veículo com matrícula: {matriculaVeiculoHist,-15} |");
-                    Console.WriteLine("+-----------------------------------------------------------------------+");
-                    Console.WriteLine("| Nome do Setor  |       Entrada       |        Saida       | Pagamento |");
-                    Console.WriteLine("+-----------------------------------------------------------------------+");
-
+                    Console.WriteLine("\n+------------------------------------------------------------------------+");
+                    Console.WriteLine($"| Histórico de Estacionamento do veículo com matrícula: {matriculaVeiculoHist,-16} |");
+                    Console.WriteLine("+------------------------------------------------------------------------+");
+                    Console.WriteLine("| Nome do Setor  |       Entrada       |        Saida        | Pagamento |");
+                    Console.WriteLine("+------------------------------------------------------------------------+");
                     foreach (var setorEst in parqueHospital.SetoresParque)
                     {
                         foreach (var registoEst in setorEst.HistoricoParque)
                         {
                             if (registoEst.Veiculo.MatriculaVeiculo == matriculaVeiculoHist)
                             {
+                                
                                 foreach (var setorEstat in parqueHospital.SetoresParque)
                                 {
-                                    Console.WriteLine($"| {setorEst.NomeSetor,-14} | {registoEst.Entrada,14} | {registoEst.Saida,14} | {registoEst.TaxaEstacionamento,7:0.00}€ |");
-
+                                    encontradaMatrícula = true;
+                                    Console.WriteLine($"| {setorEstat.NomeSetor,-14} | {registoEst.Entrada,14} | {registoEst.Saida,14} | {registoEst.TaxaEstacionamento,8:0.00}€ |");
                                 }
-                                Console.WriteLine("+-----------------------------------------------------------------------+");
-                            }
-                            else
-                            {
-                                Console.WriteLine("|     Sem Histórico de Estacionamento para a matrícula indicada         |");
-                                Console.WriteLine("+-----------------------------------------------------------------------+");
                             }
                         }
-
                     }
+                    if (!encontradaMatrícula)
+                    {
+                        Console.WriteLine($"|    Sem Histórico de Estacionamento para a matrícula {matriculaVeiculoHist,-16}   |");
+                    }
+                    Console.WriteLine("+------------------------------------------------------------------------+");
                 }
                 else
                 {
