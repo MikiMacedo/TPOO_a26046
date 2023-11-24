@@ -242,7 +242,7 @@ namespace TPOO_a26046
 
                     case '4':
                         /// Mostrar o total de receitas do Parque (Total de Pagamentos de todos os Setores)
-
+                        MostrarTotalPagamentosParque(parqueHospital);
                         break;
 
 
@@ -494,7 +494,7 @@ namespace TPOO_a26046
         }
 
 
-        /** PAra definir os tipos de Veículos Permitidos para estacionar no setor */
+        /** Para definir os tipos de Veículos Permitidos para estacionar no setor */
         static List<string> RetiraTipoVeiculosPermitidos(List<string> tiposVeiculo)
         {
             Console.WriteLine();
@@ -746,6 +746,40 @@ namespace TPOO_a26046
                 {
                     Console.WriteLine("A matrícula não pode estar vazia");
                 }
+                Console.WriteLine();
+                Console.Write("Carregue em qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+        }
+
+        /** Mostra o total de pagamentos já efetuados no Parque (em todos os setores) */
+        static void MostrarTotalPagamentosParque(ParqueHospitalar parqueHospital)
+        {
+            decimal totalPagamentos = 0;
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("\n+--------------------------------+");
+            Console.WriteLine("|   Total de Receitas do Parque  |");
+            Console.WriteLine("+--------------------------------+");
+
+            if (parqueHospital.SetoresParque.Count == 0)
+            {
+                Console.WriteLine("| Ainda sem pagamentos efetuados |");
+                Console.WriteLine("+--------------------------------+");
+                Console.WriteLine();
+                Console.Write("Carregue em qualquer tecla para continuar...");
+                Console.ReadKey();
+            }
+            else
+            {
+                /// Percorre todos os setores para calcular a o total das taxas pagas no Parque
+                foreach (var setorEstat in parqueHospital.SetoresParque)
+                {
+                    totalPagamentos += setorEstat.CalcularTotalTaxaEstacionamento();
+
+                }
+                Console.WriteLine($"|   {totalPagamentos,24:0.00}€    |");
+                Console.WriteLine("+--------------------------------+");
                 Console.WriteLine();
                 Console.Write("Carregue em qualquer tecla para continuar...");
                 Console.ReadKey();
