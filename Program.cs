@@ -125,27 +125,21 @@ namespace TPOO_a26046
                         /// Adicionar um novo Setor ao Parque
                         Console.WriteLine();
                         AdicionarSetor(parqueHospital, TiposDeVeiculos);
-                        Console.WriteLine();
-                        Console.Write("Carregue em qualquer tecla para continuar...");
-                        Console.ReadKey();
+                        CarregaTecla();
                         break;
 
                     case '2':
                         /// Remover um Setor do Parque
                         Console.WriteLine();
                         RemoverSetor(parqueHospital);
-                        Console.WriteLine();
-                        Console.Write("Carregue em qualquer tecla para continuar...");
-                        Console.ReadKey();
+                        CarregaTecla();
                         break;
 
                     case '3':
                         /// Alterar um Setor já existente do Parque
                         Console.WriteLine();
                         AlterarSetor(parqueHospital, TiposDeVeiculos);
-                        Console.WriteLine();
-                        Console.Write("Carregue em qualquer tecla para continuar...");
-                        Console.ReadKey();
+                        CarregaTecla();
                         break;
 
                     case '0':
@@ -181,15 +175,14 @@ namespace TPOO_a26046
                         /// Estacionar o veiculo no Parque
                         Console.WriteLine();
                         EstacionarVeiculo(parqueHospital, TiposDeVeiculos);
-                        Console.WriteLine();
-                        Console.Write("Carregue em qualquer tecla para continuar...");
-                        Console.ReadKey();
+                        CarregaTecla();
                         break;
 
                     case '2':
                         /// Remover o veículo do estacionamento do Parque e pagar Estacionamento
                         Console.WriteLine();
                         RemoverVeiculo(parqueHospital);
+                        CarregaTecla();
                         break;
 
                     case '0':
@@ -271,7 +264,6 @@ namespace TPOO_a26046
             Console.WriteLine(" ");
             Console.Write("    Escolhe uma opção de 0 a 2: ");
 
-
             ConsoleKeyInfo opcaoEstatisticaVeiculos = Console.ReadKey(); /// Recebe a tecla carregada para opção
 
             switch ((char)opcaoEstatisticaVeiculos.Key)
@@ -343,7 +335,6 @@ namespace TPOO_a26046
                         Console.WriteLine($"|  {tipoVeiculo,-15}  |  {pagamentoHora[tipoVeiculo],11:0.00}€  |");
                     }
                     Console.WriteLine("+------------------------------------+");
-
                 }
                 else
                 {
@@ -635,9 +626,6 @@ namespace TPOO_a26046
                     {
                         setor.FimEstacionamentoVeiculo(matriculaRemove);
                     }
-                    Console.WriteLine();
-                    Console.Write("Carregue em qualquer tecla para continuar...");
-                    Console.ReadKey();
                     break;
                 }
                 else
@@ -662,9 +650,7 @@ namespace TPOO_a26046
             {
                 Console.WriteLine("|                   Ainda não Existem Setores de Estacionamento                  |");
                 Console.WriteLine("+--------------------------------------------------------------------------------+");
-                Console.WriteLine();
-                Console.Write("Carregue em qualquer tecla para seguir...");
-                Console.ReadKey();
+                CarregaTecla();
             }
             else
             {
@@ -684,9 +670,7 @@ namespace TPOO_a26046
 
                 }
                 Console.WriteLine("+--------------------------------------------------------------------------------+");
-                Console.WriteLine();
-                Console.Write("Carregue em qualquer tecla para continuar...");
-                Console.ReadKey();
+                CarregaTecla();
             }
         }
 
@@ -702,9 +686,7 @@ namespace TPOO_a26046
                 Console.WriteLine("+----------------------------------------+");
                 Console.WriteLine("| Não existem Setores de Estacionamento  |");
                 Console.WriteLine("+----------------------------------------+");
-                Console.WriteLine();
-                Console.Write("Carregue em qualquer tecla para seguir...");
-                Console.ReadKey();
+                CarregaTecla();
             }
             else
             {
@@ -745,9 +727,7 @@ namespace TPOO_a26046
                 {
                     Console.WriteLine("A matrícula não pode estar vazia");
                 }
-                Console.WriteLine();
-                Console.Write("Carregue em qualquer tecla para continuar...");
-                Console.ReadKey();
+                CarregaTecla();
             }
         }
 
@@ -765,9 +745,7 @@ namespace TPOO_a26046
             {
                 Console.WriteLine("| Ainda sem pagamentos efetuados |");
                 Console.WriteLine("+--------------------------------+");
-                Console.WriteLine();
-                Console.Write("Carregue em qualquer tecla para continuar...");
-                Console.ReadKey();
+                CarregaTecla();
             }
             else
             {
@@ -779,9 +757,7 @@ namespace TPOO_a26046
                 }
                 Console.WriteLine($"|   {totalPagamentos,24:0.00}€    |");
                 Console.WriteLine("+--------------------------------+");
-                Console.WriteLine();
-                Console.Write("Carregue em qualquer tecla para continuar...");
-                Console.ReadKey();
+                CarregaTecla();
             }
         }
 
@@ -811,9 +787,7 @@ namespace TPOO_a26046
                 Console.WriteLine("|  Sem veículos estacionados nos Setores  |");
             }
             Console.WriteLine("+-----------------------------------------+");
-            Console.WriteLine();
-            Console.Write("Carregue em qualquer tecla para continuar...");
-            Console.ReadKey();
+            CarregaTecla();
         }
 
         /** Mostra os veículos Estacionados por setor */
@@ -882,6 +856,12 @@ namespace TPOO_a26046
                     Console.WriteLine("+------------------------------------------+");
                 }
             }
+            CarregaTecla();
+        }
+
+        /** Espera que uma tecla seja carregada para avanças (para evitar repetição de código, assim chama só esta função */
+        static void CarregaTecla()
+        {
             Console.WriteLine();
             Console.Write("Carregue em qualquer tecla para seguir...");
             Console.ReadKey();
