@@ -17,11 +17,12 @@ namespace TPOO_a26046
     {
         public string NomeSetor { get; set; }
         public int Capacidade { get; set; }
-        public List<Veiculo> Veiculos { get; set; }
+        public List<Veiculo> Veiculos { get; set; }  /// Lista dos Veiculos Estacionados
+        public List<VeiculoFuncionario> VeiculosFuncionarios { get; set; }  /// Lista dos veículos dos funcionários
         public Dictionary<string, decimal> PagamentoHoraPorTipoVeiculo { get; set; }
-        public List<string> TiposVeiculosPermitidos { get; set; }
-
-        public List<RegistoEstacionamento> HistoricoParque { get; set; }
+        public List<string> TiposVeiculosPermitidos { get; set; }  /// Lista dos Veículos Permitidos no Setor
+        public decimal PercentagemDescontoFuncionarios { get; set; }
+        public List<RegistoEstacionamento> HistoricoParque { get; set; } /// Lista dos Registos de Estacionamento e pagamentos
 
         // Dados do Setor
         public SetorParque(string nomeSetor, int capacidade, Dictionary<string, decimal> pagamentoHora, List<string> tipoVeiculosPermitidos)
@@ -31,7 +32,9 @@ namespace TPOO_a26046
             PagamentoHoraPorTipoVeiculo = pagamentoHora;
             Veiculos = new List<Veiculo>();
             TiposVeiculosPermitidos = tipoVeiculosPermitidos;
+            PercentagemDescontoFuncionarios = percentagemDescontoFuncionarios;
             HistoricoParque = new List<RegistoEstacionamento>();
+            VeiculosFuncionarios = new List<VeiculoFuncionario>();
         }
 
         /** Para verificar e indicar que o setor já se encontra cheio, sem lugares disponíveis */

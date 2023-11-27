@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TPOO_a26046")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+48dc8f19f43f5f7cf09c70852eaef20550880c52")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("TPOO_a26046")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TPOO_a26046")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
