@@ -85,7 +85,7 @@ namespace TPOO_a26046
         }
 
         /** Regista a Saída do veiculo do estacionamento */
-        public void FimEstacionamentoVeiculo(string matriculaVeiculo)
+        public void FimEstacionamentoVeiculo(string matriculaVeiculo, ParqueHospitalar parqueHospital)
         {
             Veiculo veiculoRemover = Veiculos.Find(v => v.MatriculaVeiculo == matriculaVeiculo);
             if (veiculoRemover != null)
@@ -93,7 +93,20 @@ namespace TPOO_a26046
                 DateTime saida = DateTime.Now;
                 TimeSpan tempoParque = saida - veiculoRemover.Entrada;
                 decimal horasEstacionado = (decimal)tempoParque.TotalHours;
-                veiculoRemover.TaxaEstacionamento = horasEstacionado * PagamentoHoraPorTipoVeiculo[veiculoRemover.VeiculoTipo];
+
+                bool pertenceFuncionario = parqueHospital.VeiculoPertenceFuncionario(matriculaVeiculo);
+
+                if (pertenceFuncionario)
+                {
+                    // Aplica Desconto se tiver direito
+                    veiculoRemover.TaxaEstacionamento = horasEstacionado * PagamentoHoraPorTipoVeiculo[veiculoRemover.VeiculoTipo] * ((100 - PercentagemDescontoFuncionarios)/100);
+                }
+                else
+                {
+                    // Não é funcionario por isso sem desconto
+                    veiculoRemover.TaxaEstacionamento = horasEstacionado * PagamentoHoraPorTipoVeiculo[veiculoRemover.VeiculoTipo];
+                }
+                
 
                 /// Cria Registo Estacionamento antes de remover o veiculo do Estacionamento
                 RegistoEstacionamento registoEstacionamento = new RegistoEstacionamento(veiculoRemover, veiculoRemover.Entrada, saida, veiculoRemover.TaxaEstacionamento);
@@ -129,6 +142,7 @@ namespace TPOO_a26046
             return HistoricoParque.Sum(registo => registo.TaxaEstacionamento);
         }
 
+       
     }
 
 }

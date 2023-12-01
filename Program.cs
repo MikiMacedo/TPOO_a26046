@@ -691,7 +691,7 @@ namespace TPOO_a26046
                 {
                     foreach (var setor in parqueHospital.SetoresParque)
                     {
-                        setor.FimEstacionamentoVeiculo(matriculaRemove);
+                        setor.FimEstacionamentoVeiculo(matriculaRemove, parqueHospital);
                     }
                     break;
                 }

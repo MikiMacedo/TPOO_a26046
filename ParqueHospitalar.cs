@@ -22,7 +22,7 @@ namespace TPOO_a26046
         public ParqueHospitalar()
         {
             SetoresParque = new List<SetorParque>();
-            VeiculosFuncionarios= new List<VeiculoFuncionario>();
+            VeiculosFuncionarios = new List<VeiculoFuncionario>();
         }
 
         /** Adiciona o novo Setor */
@@ -146,6 +146,12 @@ namespace TPOO_a26046
                 Console.WriteLine($"Funcionário com o veículo {matriculaFuncionario} não encontrado. Verifique a matrícula.");
             }
 
+        }
+
+        // Verifica se o veiculo pertence a um funcionario e devolve true se pertencer, false se não
+        public bool VeiculoPertenceFuncionario(string matriculaVeiculo)
+        {
+            return VeiculosFuncionarios.Any(vf => vf.MatriculaFuncionario == matriculaVeiculo);
         }
     }
 }
