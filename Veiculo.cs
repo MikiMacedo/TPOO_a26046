@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace TPOO_a26046
 {
-    // Dados do Veículo ao estacionar
+    /** Dados do Veículo ao estacionar */
     public class Veiculo
     {
         public string MatriculaVeiculo { get; set; }

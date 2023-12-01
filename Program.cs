@@ -56,7 +56,7 @@ namespace TPOO_a26046
                             setorEstaCheio = "Não";
                         }
                         /// Faz a tabela com os dados dos setores, os valores são para definir o tamanho na tabela, negativos alinhados à esquerda, positivos alinhados à direita
-                        Console.WriteLine($"| {nomeSetor.NomeSetor,-22} |       {nomeSetor.Veiculos.Count,8} | {setorEstaCheio,6} | {nomeSetor.PercentagemDescontoFuncionarios,8} %  |");
+                        Console.WriteLine($"| {nomeSetor.NomeSetor,-23} |       {nomeSetor.Veiculos.Count,8} | {setorEstaCheio,6} | {nomeSetor.PercentagemDescontoFuncionarios,7} %  |");
                     }
                     Console.WriteLine("+----------------------------------------------------------------+");
                 }
@@ -691,7 +691,7 @@ namespace TPOO_a26046
                 {
                     foreach (var setor in parqueHospital.SetoresParque)
                     {
-                        setor.FimEstacionamentoVeiculo(matriculaRemove, parqueHospital);
+                        setor.FimEstacionamentoVeiculo(matriculaRemove, setor.NomeSetor, parqueHospital);
                     }
                     break;
                 }
@@ -764,22 +764,28 @@ namespace TPOO_a26046
                 if (!string.IsNullOrWhiteSpace(matriculaVeiculoHist))
                 {
                     Console.WriteLine();
-                    Console.WriteLine("\n+------------------------------------------------------------------------+");
-                    Console.WriteLine($"| Histórico de Estacionamento do veículo com matrícula: {matriculaVeiculoHist,-16} |");
-                    Console.WriteLine("+------------------------------------------------------------------------+");
-                    Console.WriteLine("| Nome do Setor  |       Entrada       |        Saida        | Pagamento |");
-                    Console.WriteLine("+------------------------------------------------------------------------+");
+                    Console.WriteLine("\n+-------------------------------------------------------------------------------------+");
+                    Console.WriteLine($"|        Histórico de Estacionamento do veículo com matrícula: {matriculaVeiculoHist,-16}       |");
+                    Console.WriteLine("+-------------------------------------------------------------------------------------+");
+                    Console.WriteLine("| Nome do Setor  |       Entrada       |        Saida        | Pagamento | % Desconto |");
+                    Console.WriteLine("+-------------------------------------------------------------------------------------+");
                     foreach (var setorEst in parqueHospital.SetoresParque)
                     {
+                        bool setorNaoListado = true; /// Evita duplicação de dados listados
                         foreach (var registoEst in setorEst.HistoricoParque)
                         {
                             if (registoEst.Veiculo.MatriculaVeiculo == matriculaVeiculoHist)
                             {
-                                
+
                                 foreach (var setorEstat in parqueHospital.SetoresParque)
                                 {
                                     encontradaMatrícula = true;
-                                    Console.WriteLine($"| {setorEstat.NomeSetor,-14} | {registoEst.Entrada,14} | {registoEst.Saida,14} | {registoEst.TaxaEstacionamento,8:0.00}€ |");
+                                    if (setorNaoListado)
+                                    {
+                                        setorNaoListado = false;
+                                        Console.WriteLine($"| {registoEst.SetorEstacionado,-14} | {registoEst.Entrada,14} | {registoEst.Saida,14} | {registoEst.TaxaEstacionamento,8:0.00}€ |    {registoEst.DescontoAplicado,3}%    |");
+
+                                    }
                                 }
                             }
                         }
@@ -788,7 +794,7 @@ namespace TPOO_a26046
                     {
                         Console.WriteLine($"|    Sem Histórico de Estacionamento para a matrícula {matriculaVeiculoHist,-16}   |");
                     }
-                    Console.WriteLine("+------------------------------------------------------------------------+");
+                    Console.WriteLine("+-------------------------------------------------------------------------------------+");
                 }
                 else
                 {

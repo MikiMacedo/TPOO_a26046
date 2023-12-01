@@ -23,7 +23,7 @@ namespace TPOO_a26046
         public decimal PercentagemDescontoFuncionarios { get; set; }
         public List<RegistoEstacionamento> HistoricoParque { get; set; } /// Lista dos Registos de Estacionamento e pagamentos
 
-        // Dados do Setor
+        /** Dados do Setor */
         public SetorParque(string nomeSetor, int capacidade, Dictionary<string, decimal> pagamentoHora, List<string> tipoVeiculosPermitidos, decimal percentagemDescontoFuncionarios)
         {
             NomeSetor = nomeSetor;
@@ -85,7 +85,7 @@ namespace TPOO_a26046
         }
 
         /** Regista a Saída do veiculo do estacionamento */
-        public void FimEstacionamentoVeiculo(string matriculaVeiculo, ParqueHospitalar parqueHospital)
+        public void FimEstacionamentoVeiculo(string matriculaVeiculo, string setorEstacionado, ParqueHospitalar parqueHospital)
         {
             Veiculo veiculoRemover = Veiculos.Find(v => v.MatriculaVeiculo == matriculaVeiculo);
             if (veiculoRemover != null)
@@ -99,17 +99,17 @@ namespace TPOO_a26046
                 if (pertenceFuncionario)
                 {
                     // Aplica Desconto se tiver direito
-                    veiculoRemover.TaxaEstacionamento = horasEstacionado * PagamentoHoraPorTipoVeiculo[veiculoRemover.VeiculoTipo] * ((100 - PercentagemDescontoFuncionarios)/100);
+                    veiculoRemover.TaxaEstacionamento = horasEstacionado * PagamentoHoraPorTipoVeiculo[veiculoRemover.VeiculoTipo] * ((100 - PercentagemDescontoFuncionarios) / 100);
                 }
                 else
                 {
                     // Não é funcionario por isso sem desconto
                     veiculoRemover.TaxaEstacionamento = horasEstacionado * PagamentoHoraPorTipoVeiculo[veiculoRemover.VeiculoTipo];
                 }
-                
+
 
                 /// Cria Registo Estacionamento antes de remover o veiculo do Estacionamento
-                RegistoEstacionamento registoEstacionamento = new RegistoEstacionamento(veiculoRemover, veiculoRemover.Entrada, saida, veiculoRemover.TaxaEstacionamento);
+                RegistoEstacionamento registoEstacionamento = new RegistoEstacionamento(veiculoRemover, veiculoRemover.Entrada, saida, veiculoRemover.TaxaEstacionamento, PercentagemDescontoFuncionarios, setorEstacionado);
                 HistoricoParque.Add(registoEstacionamento);
 
                 Veiculos.Remove(veiculoRemover);
@@ -128,6 +128,14 @@ namespace TPOO_a26046
                 Console.WriteLine("+---------------------+---------------------+");
                 Console.WriteLine($"| {veiculoRemover.Entrada,-19} | {saida,-19} |");
                 Console.WriteLine("+---------------------+---------------------+");
+                // Se matricula pertencer a funcionário, mostra a percentagem do desconto e o valor descontado
+                if (pertenceFuncionario)
+                {
+                    Console.WriteLine("| % Desconto aplicado |   Taxa Descontada   |");
+                    Console.WriteLine("+---------------------+---------------------+");
+                    Console.WriteLine($"|        {PercentagemDescontoFuncionarios,3} %        |    {(horasEstacionado * PagamentoHoraPorTipoVeiculo[veiculoRemover.VeiculoTipo]) - veiculoRemover.TaxaEstacionamento,12:0.00}€    |");
+                    Console.WriteLine("+---------------------+---------------------+");
+                }
             }
             else
             {
