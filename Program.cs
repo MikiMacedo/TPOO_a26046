@@ -166,13 +166,6 @@ namespace TPOO_a26046
                         CarregaTecla();
                         break;
 
-                    case '7':
-                        /// Lista Veículos de Funcionário do Hospital com direito a Desconto (menu secreto para verificar)
-                        Console.WriteLine();
-                        ListarFuncionarios(parqueHospital);
-                        CarregaTecla();
-                        break;
-
                     case '0':
                         return;
 
@@ -239,6 +232,7 @@ namespace TPOO_a26046
                 Console.WriteLine("| 2 |  Estatísticas dos Veiculos no Estacionamento        |");
                 Console.WriteLine("| 3 |  Histórico de Pagamentos por Veículo                |");
                 Console.WriteLine("| 4 |  Total de Receita do Parque de Estacionamento       |");
+                Console.WriteLine("| 5 |  Listar Funcionários com direito a desconto         |");
                 Console.WriteLine("| 0 |  Voltar ao Menu de Gestão                           |");
                 Console.WriteLine("+---+-----------------------------------------------------+");
                 Console.WriteLine(" ");
@@ -269,6 +263,12 @@ namespace TPOO_a26046
                         MostrarTotalPagamentosParque(parqueHospital);
                         break;
 
+                    case '5':
+                        /// Lista Veículos de Funcionário do Hospital com direito a Desconto (menu secreto para verificar)
+                        Console.WriteLine();
+                        ListarFuncionarios(parqueHospital);
+                        CarregaTecla();
+                        break;
 
                     case '0':
                         /// Voltar ao Menu Principal
@@ -1000,19 +1000,27 @@ namespace TPOO_a26046
         /** Lista todos os funcionários e o seu veículo que pode ter direito aos descontos no parque de estacionamento */
         static void ListarFuncionarios(ParqueHospitalar parqueHospital)
         {
+            
             Console.Clear();
             Console.WriteLine(); 
-            Console.WriteLine("\n+----------------------------------------------------------------------------------------------------------+"); 
-            Console.WriteLine("|           LISTA DE FUNCIONÁRIOS COM DIREITO A DESCONTO NO PARQUE DE ESTACIONAMENTO DO HOSPITAL           |");
-            Console.WriteLine("+-------------------------------------------------------+---------------------------+----------------------+");
-            Console.WriteLine("|                  Nome do Funcionário                  | Profissão do Funcionário  | Matrícula do Veículo |");
-            Console.WriteLine("+-------------------------------------------------------+---------------------------+----------------------+");
-
-            foreach (var funcionario in parqueHospital.VeiculosFuncionarios)
+            Console.WriteLine("\n+----------------------------------------------------------------------------------------------------------+");
+            if (parqueHospital.VeiculosFuncionarios.Count == 0) //Não há funcionários
             {
-                Console.WriteLine($"| {funcionario.NomeFuncionario,-53} | {funcionario.ProfissaoFuncionario,-25} |  {funcionario.MatriculaFuncionario,18}  |");
+                Console.WriteLine("|        NÃO EXISTEM AINDA FUNCIONÁRIOS COM DIREITO A DESCONTO REGISTADOS NO PARQUE DE ESTACIONAMENTO         |");
             }
-            Console.WriteLine("+-------------------------------------------------------+---------------------------+----------------------+");
+            else
+            {
+                Console.WriteLine("|           LISTA DE FUNCIONÁRIOS COM DIREITO A DESCONTO NO PARQUE DE ESTACIONAMENTO DO HOSPITAL           |");
+                Console.WriteLine("+-------------------------------------------------------+---------------------------+----------------------+");
+                Console.WriteLine("|                  Nome do Funcionário                  | Profissão do Funcionário  | Matrícula do Veículo |");
+                Console.WriteLine("+-------------------------------------------------------+---------------------------+----------------------+");
+
+                foreach (var funcionario in parqueHospital.VeiculosFuncionarios)
+                {
+                    Console.WriteLine($"| {funcionario.NomeFuncionario,-53} | {funcionario.ProfissaoFuncionario,-25} |  {funcionario.MatriculaFuncionario,18}  |");
+                }
+            }
+            Console.WriteLine("+----------------------------------------------------------------------------------------------------------+");
         }
         
     }
