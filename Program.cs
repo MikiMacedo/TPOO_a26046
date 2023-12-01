@@ -25,7 +25,7 @@ namespace TPOO_a26046
             ParqueHospitalar parqueHospital = new ParqueHospitalar();
 
             List<string> TiposDeVeiculos = new List<string> { "Motociclo", "Carro", "Carrinha", "Camião" }; // Define os tipos de Veículos para listagem
-
+           
             while (true)
             {
                 /** Estatística de todos os setores existentes no ecrão inicial */
@@ -33,7 +33,7 @@ namespace TPOO_a26046
                 Console.WriteLine("\n+----------------------------------------------------------------+");
                 Console.WriteLine("|    Estatísticas do Parque de Estacionamento do Hospital        |");
                 Console.WriteLine("+----------------------------------------------------------------+");
-                Console.WriteLine("|      Nome do Setor     |      Estacionados      |    Cheio?    |");
+                Console.WriteLine("|      Nome do Setor      |  Estacionados  | Cheio? | % Desconto |");
                 Console.WriteLine("+----------------------------------------------------------------+");
 
                 if (parqueHospital.SetoresParque.Count == 0) //Não há setores ainda
@@ -56,7 +56,7 @@ namespace TPOO_a26046
                             setorEstaCheio = "Não";
                         }
                         /// Faz a tabela com os dados dos setores, os valores são para definir o tamanho na tabela, negativos alinhados à esquerda, positivos alinhados à direita
-                        Console.WriteLine($"|   {nomeSetor.NomeSetor,-20} |       {nomeSetor.Veiculos.Count,16} | {setorEstaCheio,6}       |");
+                        Console.WriteLine($"| {nomeSetor.NomeSetor,-22} |       {nomeSetor.Veiculos.Count,8} | {setorEstaCheio,6} | {nomeSetor.PercentagemDescontoFuncionarios,8} %  |");
                     }
                     Console.WriteLine("+----------------------------------------------------------------+");
                 }
@@ -112,6 +112,9 @@ namespace TPOO_a26046
                 Console.WriteLine("| 1 |  Adicionar Setor do Parque                          |");
                 Console.WriteLine("| 2 |  Remover Setor do Parque                            |");
                 Console.WriteLine("| 3 |  Alterar Setor do Parque                            |");
+                Console.WriteLine("| 4 |  Adicionar Veículo de Funcionário para Desconto     |");
+                Console.WriteLine("| 5 |  Remover Veículo de Funcionário do Desconto         |");
+                Console.WriteLine("| 6 |  Alterar Veículo de Funcinário para Desconto        |");
                 Console.WriteLine("| 0 |  Voltar ao Menu Principal                           |");
                 Console.WriteLine("+---+-----------------------------------------------------+");
                 Console.WriteLine();
@@ -139,6 +142,27 @@ namespace TPOO_a26046
                         /// Alterar um Setor já existente do Parque
                         Console.WriteLine();
                         AlterarSetor(parqueHospital, TiposDeVeiculos);
+                        CarregaTecla();
+                        break;
+
+                    case '4':
+                        /// Adicionar Veículo de Funcionário do Hospital com direito a Desconto
+                        Console.WriteLine();
+                        /// AdicionaVeiculoFuncionario
+                        CarregaTecla();
+                        break;
+
+                    case '5':
+                        /// Remover um Veículo de Funcionário do Hospital com direito a Desconto
+                        Console.WriteLine();
+                        /// RemoverVeiculoFuncinario
+                        CarregaTecla();
+                        break;
+
+                    case '6':
+                        /// Alterar Veículo de Funcionário do Hospital com direito a Desconto
+                        Console.WriteLine();
+                        /// AlterarVeiculoFuncionario
                         CarregaTecla();
                         break;
 
@@ -303,42 +327,60 @@ namespace TPOO_a26046
                 Console.Write("Capacidade do Setor: "); /// Para definir a capacidade do Setor
                 if (int.TryParse(Console.ReadLine(), out int capacidadeSetor))
                 {
-                    List<string> tipoVeiculosPermitidos = RetiraTipoVeiculosPermitidos(TiposDeVeiculos); ///Para definir os tipos de veículos permitidos no Setor
-                    if (tipoVeiculosPermitidos.Count == 0)
+                    Console.Write("Desconto para Funcionários no Setor: "); /// Para definir a desconto dos funcionários no Setor
+                    if (decimal.TryParse(Console.ReadLine(), out decimal percentagemDescontoFuncionarios))
                     {
-                        Console.WriteLine("Pelo menos um tipo de Veiculo é necessário");
-                        return;
-                    }
-                    Dictionary<string, decimal> pagamentoHora = RetiraPagamentoHora(tipoVeiculosPermitidos);
-                    if (pagamentoHora.Count == 0)
-                    {
-                        Console.WriteLine("É preciso colocar quanto custa o estacionamento por Hora");
-                        return;
-                    }
+                        if (percentagemDescontoFuncionarios >= 0 && percentagemDescontoFuncionarios <= 100)
+                        {
+                            List<string> tipoVeiculosPermitidos = RetiraTipoVeiculosPermitidos(TiposDeVeiculos); ///Para definir os tipos de veículos permitidos no Setor
+                            if (tipoVeiculosPermitidos.Count == 0)
+                            {
+                                Console.WriteLine("Pelo menos um tipo de Veiculo é necessário");
+                                return;
+                            }
+                            Dictionary<string, decimal> pagamentoHora = RetiraPagamentoHora(tipoVeiculosPermitidos);
+                            if (pagamentoHora.Count == 0)
+                            {
+                                Console.WriteLine("É preciso colocar quanto custa o estacionamento por Hora");
+                                return;
+                            }
 
-                    SetorParque novoSetor = new SetorParque(nomeSetor, capacidadeSetor, pagamentoHora, tipoVeiculosPermitidos);
-                    parqueHospital.AdicionaSetor(novoSetor);
-                    Console.Clear();
-                    Console.WriteLine();
-                    Console.WriteLine("\n+------------------------------------+");
-                    Console.WriteLine("|  ADICIONADO NOVO SETOR AO PARQUE   |");
-                    Console.WriteLine("|   DE ESTACIONAMENTO DO HOSPITAL    |");
-                    Console.WriteLine("+------------------------------------+");
-                    Console.WriteLine("|   Nome do Setor   |   Capacidade   |");
-                    Console.WriteLine("+------------------------------------+");
-                    Console.WriteLine($"|  {nomeSetor,-15}  |  {capacidadeSetor,12}  |");
-                    Console.WriteLine("+------------------------------------+");
-                    Console.WriteLine("|  Tipo de Veículo  |   Taxa/Hora    |");
-                    Console.WriteLine("+------------------------------------+");
-                    foreach (var tipoVeiculo in pagamentoHora.Keys)
-                    {
-                        Console.WriteLine($"|  {tipoVeiculo,-15}  |  {pagamentoHora[tipoVeiculo],11:0.00}€  |");
+
+                            SetorParque novoSetor = new SetorParque(nomeSetor, capacidadeSetor, pagamentoHora, tipoVeiculosPermitidos, percentagemDescontoFuncionarios);
+                            parqueHospital.AdicionaSetor(novoSetor);
+                            Console.Clear();
+                            Console.WriteLine();
+                            Console.WriteLine("\n+------------------------------------+");
+                            Console.WriteLine("|  ADICIONADO NOVO SETOR AO PARQUE   |");
+                            Console.WriteLine("|   DE ESTACIONAMENTO DO HOSPITAL    |");
+                            Console.WriteLine("+------------------------------------+");
+                            Console.WriteLine("|   Nome do Setor   |   Capacidade   |");
+                            Console.WriteLine("+------------------------------------+");
+                            Console.WriteLine($"|  {nomeSetor,-15}  |  {capacidadeSetor,12}  |");
+                            Console.WriteLine("+------------------------------------+");
+                            Console.WriteLine("|  Tipo de Veículo  |   Taxa/Hora    |");
+                            Console.WriteLine("+------------------------------------+");
+                            foreach (var tipoVeiculo in pagamentoHora.Keys)
+                            {
+                                Console.WriteLine($"|  {tipoVeiculo,-15}  |  {pagamentoHora[tipoVeiculo],11:0.00}€  |");
+                            }
+                            Console.WriteLine("+------------------------------------+");
+                            Console.WriteLine($"| Desconto para Funcionários: {percentagemDescontoFuncionarios,5}% |");
+                            Console.WriteLine("+------------------------------------+");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Desconto inválido, a percentagem deve ser entre 0 % e 100 %");
+                        }
                     }
-                    Console.WriteLine("+------------------------------------+");
+                    else
+                    {
+                        Console.WriteLine("Percentagem de Desconto inválido, coloque um valor númerico válido entre 0 e 100");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Capacidade Inválida. Por favor, coloque um número válido");
+                    Console.WriteLine("Capacidade Inválida. Por favor, coloque um valor númerico válido");
                 }
             }
             else
@@ -430,43 +472,61 @@ namespace TPOO_a26046
                     Console.Write("Nova Capacidade do Setor: ");
                     if (int.TryParse(Console.ReadLine(), out int novaCapacidadeSetor))
                     {
-                        List<string> novoTipoVeiculosPermitidos = RetiraTipoVeiculosPermitidos(TiposDeVeiculos);
-                        if (novoTipoVeiculosPermitidos.Count == 0)
+                        Console.Write("Novo valor de Desconto para Funcionários no Setor: "); /// Para definir a desconto dos funcionários no Setor
+                        if (decimal.TryParse(Console.ReadLine(), out decimal novaPercentagemDesconto))
                         {
-                            Console.WriteLine("Pelo menos um tipo de Veículo é necessário");
-                            return;
-                        }
+                            if (novaPercentagemDesconto >= 0 && novaPercentagemDesconto <= 100)
+                            {
+                                List<string> novoTipoVeiculosPermitidos = RetiraTipoVeiculosPermitidos(TiposDeVeiculos);
+                                if (novoTipoVeiculosPermitidos.Count == 0)
+                                {
+                                    Console.WriteLine("Pelo menos um tipo de Veículo é necessário");
+                                    return;
+                                }
 
-                        Dictionary<string, decimal> novoPagamentoHora = RetiraPagamentoHora(novoTipoVeiculosPermitidos);
-                        if (novoPagamentoHora.Count == 0)
+                                Dictionary<string, decimal> novoPagamentoHora = RetiraPagamentoHora(novoTipoVeiculosPermitidos);
+                                if (novoPagamentoHora.Count == 0)
+                                {
+                                    Console.WriteLine("É preciso colocar quanto custa o estacionamento por Hora");
+                                    return;
+                                }
+
+                                // Atualiza as informações do setor
+                                string antigoNomeSetor = nomeSetor;
+                                setorExistente.NomeSetor = novoNomeSetor;
+                                setorExistente.Capacidade = novaCapacidadeSetor;
+                                setorExistente.TiposVeiculosPermitidos = novoTipoVeiculosPermitidos;
+                                setorExistente.PagamentoHoraPorTipoVeiculo = novoPagamentoHora;
+                                setorExistente.PercentagemDescontoFuncionarios = novaPercentagemDesconto;
+
+                                Console.Clear();
+                                Console.WriteLine("\n+------------------------------------+");
+                                Console.WriteLine("|      SETOR ALTERADO NO PARQUE      |");
+                                Console.WriteLine("|    DE ESTACIONAMENTO DO HOSPITAL   |");
+                                Console.WriteLine("+------------------------------------+");
+                                Console.WriteLine($"|  Antigo Nome: {antigoNomeSetor,-19}  |");
+                                Console.WriteLine("+------------------------------------+");
+                                Console.WriteLine("|   Nome do Setor   |   Capacidade   |");
+                                Console.WriteLine("+------------------------------------+");
+                                Console.WriteLine($"|  {setorExistente.NomeSetor,-15}  |  {setorExistente.Capacidade,12}  |");
+                                Console.WriteLine("+------------------------------------+");
+                                foreach (var tipoVeiculo in novoPagamentoHora.Keys)
+                                {
+                                    Console.WriteLine($"|  {tipoVeiculo,-15}  |  {novoPagamentoHora[tipoVeiculo],11:0.00}€  |");
+                                }
+                                Console.WriteLine("+------------------------------------+");
+                                Console.WriteLine($"| Desconto para Funcionários: {novaPercentagemDesconto,5}% |");
+                                Console.WriteLine("+------------------------------------+");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Desconto inválido, a percentagem deve ser entre 0 % e 100 %");
+                            }
+                        }
+                        else
                         {
-                            Console.WriteLine("É preciso colocar quanto custa o estacionamento por Hora");
-                            return;
+                            Console.WriteLine("Percentagem de Desconto inválido, coloque um valor númerico válido entre 0 e 100");
                         }
-
-                        // Atualiza as informações do setor
-                        string antigoNomeSetor = nomeSetor;
-                        setorExistente.NomeSetor = novoNomeSetor;
-                        setorExistente.Capacidade = novaCapacidadeSetor;
-                        setorExistente.TiposVeiculosPermitidos = novoTipoVeiculosPermitidos;
-                        setorExistente.PagamentoHoraPorTipoVeiculo = novoPagamentoHora;
-
-                        Console.Clear();
-                        Console.WriteLine("\n+------------------------------------+");
-                        Console.WriteLine("|      SETOR ALTERADO NO PARQUE      |");
-                        Console.WriteLine("|    DE ESTACIONAMENTO DO HOSPITAL   |");
-                        Console.WriteLine("+------------------------------------+");
-                        Console.WriteLine($"|  Antigo Nome: {antigoNomeSetor,-19}  |");
-                        Console.WriteLine("+------------------------------------+"); 
-                        Console.WriteLine("|   Nome do Setor   |   Capacidade   |");
-                        Console.WriteLine("+------------------------------------+");
-                        Console.WriteLine($"|  {setorExistente.NomeSetor,-15}  |  {setorExistente.Capacidade,12}  |");
-                        Console.WriteLine("+------------------------------------+");
-                        foreach (var tipoVeiculo in novoPagamentoHora.Keys)
-                        {
-                            Console.WriteLine($"|  {tipoVeiculo,-15}  |  {novoPagamentoHora[tipoVeiculo],11:0.00}€  |");
-                        }
-                        Console.WriteLine("+------------------------------------+");
                     }
                     else
                     {

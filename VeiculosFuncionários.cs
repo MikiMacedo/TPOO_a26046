@@ -20,7 +20,7 @@ namespace TPOO_a26046
         public string MatriculaFuncionario { get; set; }
         public string ProfissaoFuncionario { get; set; }
 
-        public VeiculoFuncionario(string NomeFuncionario, string MatriculaFuncionario, string ProfissaoFuncionario)
+        public VeiculoFuncionario(string nomeFuncionario, string matriculaFuncionario, string profissaoFuncionario)
         {
             NomeFuncionario = nomeFuncionario;
             MatriculaFuncionario = matriculaFuncionario;
