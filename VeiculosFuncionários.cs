@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace TPOO_a26046
 {
-    /// Dados dos Veículos dos Funcionários
+    /** Dados dos Veículos dos Funcionários */
     public class VeiculoFuncionario
     {
         public string NomeFuncionario { get; set; }

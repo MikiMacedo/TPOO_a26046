@@ -689,16 +689,33 @@ namespace TPOO_a26046
                 string matriculaRemove = Console.ReadLine();
                 if (!string.IsNullOrWhiteSpace(matriculaRemove))
                 {
+                    bool matriculaEncontrada = false;
+
                     foreach (var setor in parqueHospital.SetoresParque)
                     {
                         setor.FimEstacionamentoVeiculo(matriculaRemove, setor.NomeSetor, parqueHospital);
                     }
+
+
+                    if (!parqueHospital.VeiculoRemovido)
+                    {
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine("\n+-------------------------------------------+");
+                        Console.WriteLine("|   NÃO FOI ENCONTRADO NENHUM VEÍCULO NOS   |");
+                        Console.WriteLine($"|  SETORES COM A MATRÍCULA: {matriculaRemove,-14}  |");
+                        Console.WriteLine("+---------------------+---------------------+");
+                        parqueHospital.VeiculoRemovido = false;
+                    }
                     break;
+                    
                 }
                 else
                 {
                     Console.WriteLine("O Campo da Matrícula não pode estar vazio, adicione a Matrícula");
                 }
+              
             }
         }
 

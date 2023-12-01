@@ -113,6 +113,7 @@ namespace TPOO_a26046
                 HistoricoParque.Add(registoEstacionamento);
 
                 Veiculos.Remove(veiculoRemover);
+                parqueHospital.VeiculoRemovido = true;
                 Console.Clear();
                 Console.WriteLine();
                 Console.WriteLine();
@@ -137,11 +138,7 @@ namespace TPOO_a26046
                     Console.WriteLine("+---------------------+---------------------+");
                 }
             }
-            else
-            {
-                Console.WriteLine();
-                Console.WriteLine($"Veiculo não foi encontrado no {NomeSetor}");
-            }
+
         }
 
         /** Calcula a soma das taxas de estacionamento pagas por setor */

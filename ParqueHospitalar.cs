@@ -18,11 +18,13 @@ namespace TPOO_a26046
         /** Registos do Parque do Estacionamento do Hospital */
         public List<SetorParque> SetoresParque { get; private set; }
         public List<VeiculoFuncionario> VeiculosFuncionarios { get; private set; }  /// Lista dos veículos dos funcionários
+        public bool VeiculoRemovido { get; set; }
 
         public ParqueHospitalar()
         {
             SetoresParque = new List<SetorParque>();
             VeiculosFuncionarios = new List<VeiculoFuncionario>();
+            VeiculoRemovido = false;
         }
 
         /** Adiciona o novo Setor */
@@ -98,7 +100,7 @@ namespace TPOO_a26046
 
         }
 
-        //* Altera veiculo de Funcionario da listagem dos veiculos dos funcionários com direito a desconto */
+        /** Altera veiculo de Funcionario da listagem dos veiculos dos funcionários com direito a desconto */
         public void AlteraVeiculoFuncionario(string matriculaFuncionario)
         {
 
@@ -148,7 +150,7 @@ namespace TPOO_a26046
 
         }
 
-        //* Verifica se o veiculo pertence a um funcionario e devolve true se pertencer, false se não */
+        /** Verifica se o veiculo pertence a um funcionario e devolve true se pertencer, false se não */
         public bool VeiculoPertenceFuncionario(string matriculaVeiculo)
         {
             return VeiculosFuncionarios.Any(vf => vf.MatriculaFuncionario == matriculaVeiculo);
