@@ -1,11 +1,12 @@
 var indexSectionsWithContent =
 {
-  0: "adoprstv",
+  0: "acdefoprstv",
   1: "prsv",
   2: "t",
   3: "prsv",
-  4: "a",
-  5: "adopt"
+  4: "acefrsv",
+  5: "psv",
+  6: "adopt"
 };
 
 var indexSectionNames =
@@ -15,7 +16,8 @@ var indexSectionNames =
   2: "namespaces",
   3: "files",
   4: "functions",
-  5: "pages"
+  5: "properties",
+  6: "pages"
 };
 
 var indexSectionLabels =
@@ -25,6 +27,7 @@ var indexSectionLabels =
   2: "Namespaces",
   3: "Files",
   4: "Functions",
-  5: "Pages"
+  5: "Properties",
+  6: "Pages"
 };
 

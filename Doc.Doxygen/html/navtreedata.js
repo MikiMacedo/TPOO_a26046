@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "Sistema de Gestão do Parque do Hospital", "index.html", [
-    [ "Trabalho de Programação Orientada a Objetos", "md__r_e_a_d_m_e.html", null ],
+    [ "Trabalho de Programação Orientada a Objetos", "md__c_1_2_users_2migue_2_one_drive_2_documentos_2_git_hub_2_t_p_o_o__a26046_2_r_e_a_d_m_e.html", null ],
     [ "Packages", "namespaces.html", [
       [ "Package List", "namespaces.html", "namespaces_dup" ]
     ] ],
@@ -34,7 +34,8 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ]
+        [ "Functions", "functions_func.html", null ],
+        [ "Properties", "functions_prop.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [

@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Sistema de Gestão do Parque do Hospital<span id="projectnumber">&#160;Fase.1</span>
+   <div id="projectname">Sistema de Gestão do Parque do Hospital<span id="projectnumber">&#160;Fase.2</span>
    </div>
    <div id="projectbrief">Sistema capaz de gerir um parque de estacionamento de um Hospital, com múltiplos setores de estacionamento...</div>
   </td>
@@ -100,9 +100,19 @@ $(document).ready(function(){initNavTree('class_t_p_o_o__a26046_1_1_setor_parque
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3be1e489af79ed096ce0722e24d144a1" id="r_a3be1e489af79ed096ce0722e24d144a1"><td class="memItemLeft" align="right" valign="top"><a id="a3be1e489af79ed096ce0722e24d144a1" name="a3be1e489af79ed096ce0722e24d144a1"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SetorParque</b> (string nomeSetor, int capacidade, Dictionary&lt; string, decimal &gt; pagamentoHora, List&lt; string &gt; tipoVeiculosPermitidos)</td></tr>
-<tr class="separator:a3be1e489af79ed096ce0722e24d144a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefaa6ba2235fc5818856169af247c2b2" id="r_aefaa6ba2235fc5818856169af247c2b2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_p_o_o__a26046_1_1_setor_parque.html#aefaa6ba2235fc5818856169af247c2b2">SetorParque</a> (string nomeSetor, int capacidade, Dictionary&lt; string, decimal &gt; pagamentoHora, List&lt; string &gt; tipoVeiculosPermitidos, decimal percentagemDescontoFuncionarios)</td></tr>
+<tr class="memdesc:aefaa6ba2235fc5818856169af247c2b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista dos Registos de Estacionamento e pagamentos.  <br /></td></tr>
+<tr class="separator:aefaa6ba2235fc5818856169af247c2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a119fb17f4b66d8e48181359a66d34dfe" id="r_a119fb17f4b66d8e48181359a66d34dfe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_p_o_o__a26046_1_1_setor_parque.html#a119fb17f4b66d8e48181359a66d34dfe">SetorCheio</a> ()</td></tr>
+<tr class="separator:a119fb17f4b66d8e48181359a66d34dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a6f5c979547a73102f7943e5a6e0fc8" id="r_a6a6f5c979547a73102f7943e5a6e0fc8"><td class="memItemLeft" align="right" valign="top">decimal&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_p_o_o__a26046_1_1_setor_parque.html#a6a6f5c979547a73102f7943e5a6e0fc8">CalcularPagamentoParque</a> (decimal taxaHora, DateTime entrada)</td></tr>
+<tr class="separator:a6a6f5c979547a73102f7943e5a6e0fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a97fa9a89970616213ff61c6a765f4f" id="r_a4a97fa9a89970616213ff61c6a765f4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_p_o_o__a26046_1_1_setor_parque.html#a4a97fa9a89970616213ff61c6a765f4f">EstacionaVeiculo</a> (<a class="el" href="class_t_p_o_o__a26046_1_1_veiculo.html">Veiculo</a> veiculoEstaciona)</td></tr>
+<tr class="separator:a4a97fa9a89970616213ff61c6a765f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ec2352af0aa1763bfd37cc498756a96" id="r_a2ec2352af0aa1763bfd37cc498756a96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_p_o_o__a26046_1_1_setor_parque.html#a2ec2352af0aa1763bfd37cc498756a96">FimEstacionamentoVeiculo</a> (string matriculaVeiculo, string setorEstacionado, <a class="el" href="class_t_p_o_o__a26046_1_1_parque_hospitalar.html">ParqueHospitalar</a> parqueHospital)</td></tr>
+<tr class="separator:a2ec2352af0aa1763bfd37cc498756a96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06e8603973a9d0a48745b7d569ea227c" id="r_a06e8603973a9d0a48745b7d569ea227c"><td class="memItemLeft" align="right" valign="top">decimal&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_p_o_o__a26046_1_1_setor_parque.html#a06e8603973a9d0a48745b7d569ea227c">CalcularTotalTaxaEstacionamento</a> ()</td></tr>
+<tr class="separator:a06e8603973a9d0a48745b7d569ea227c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -117,16 +127,236 @@ List&lt; <a class="el" href="class_t_p_o_o__a26046_1_1_veiculo.html">Veiculo</a>
 <tr class="separator:ab2de5ee717012bf71475d90d1355cc87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdf19db199a20aacd2d1eb54d00db0ad" id="r_afdf19db199a20aacd2d1eb54d00db0ad"><td class="memItemLeft" align="right" valign="top"><a id="afdf19db199a20aacd2d1eb54d00db0ad" name="afdf19db199a20aacd2d1eb54d00db0ad"></a>
 Dictionary&lt; string, decimal &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>PagamentoHoraPorTipoVeiculo</b><code> [get, set]</code></td></tr>
+<tr class="memdesc:afdf19db199a20aacd2d1eb54d00db0ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista dos Veiculos Estacionados. <br /></td></tr>
 <tr class="separator:afdf19db199a20aacd2d1eb54d00db0ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa757917c7f6a7c6d6f29cdb3e5c7ba55" id="r_aa757917c7f6a7c6d6f29cdb3e5c7ba55"><td class="memItemLeft" align="right" valign="top"><a id="aa757917c7f6a7c6d6f29cdb3e5c7ba55" name="aa757917c7f6a7c6d6f29cdb3e5c7ba55"></a>
 List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>TiposVeiculosPermitidos</b><code> [get, set]</code></td></tr>
 <tr class="separator:aa757917c7f6a7c6d6f29cdb3e5c7ba55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21ce200b496bb3aa5b706a3dc1444b34" id="r_a21ce200b496bb3aa5b706a3dc1444b34"><td class="memItemLeft" align="right" valign="top"><a id="a21ce200b496bb3aa5b706a3dc1444b34" name="a21ce200b496bb3aa5b706a3dc1444b34"></a>
+decimal&#160;</td><td class="memItemRight" valign="bottom"><b>PercentagemDescontoFuncionarios</b><code> [get, set]</code></td></tr>
+<tr class="memdesc:a21ce200b496bb3aa5b706a3dc1444b34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista dos Veículos Permitidos no Setor. <br /></td></tr>
+<tr class="separator:a21ce200b496bb3aa5b706a3dc1444b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2554ec33381835b0f0b108bffc0e5bfd" id="r_a2554ec33381835b0f0b108bffc0e5bfd"><td class="memItemLeft" align="right" valign="top"><a id="a2554ec33381835b0f0b108bffc0e5bfd" name="a2554ec33381835b0f0b108bffc0e5bfd"></a>
 List&lt; <a class="el" href="class_t_p_o_o__a26046_1_1_registo_estacionamento.html">RegistoEstacionamento</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>HistoricoParque</b><code> [get, set]</code></td></tr>
 <tr class="separator:a2554ec33381835b0f0b108bffc0e5bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aefaa6ba2235fc5818856169af247c2b2" name="aefaa6ba2235fc5818856169af247c2b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefaa6ba2235fc5818856169af247c2b2">&#9670;&#160;</a></span>SetorParque()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TPOO_a26046.SetorParque.SetorParque </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>nomeSetor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>capacidade</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Dictionary&lt; string, decimal &gt;&#160;</td>
+          <td class="paramname"><em>pagamentoHora</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">List&lt; string &gt;&#160;</td>
+          <td class="paramname"><em>tipoVeiculosPermitidos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">decimal&#160;</td>
+          <td class="paramname"><em>percentagemDescontoFuncionarios</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lista dos Registos de Estacionamento e pagamentos. </p>
+<p>Dados do Setor </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6a6f5c979547a73102f7943e5a6e0fc8" name="a6a6f5c979547a73102f7943e5a6e0fc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a6f5c979547a73102f7943e5a6e0fc8">&#9670;&#160;</a></span>CalcularPagamentoParque()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">decimal TPOO_a26046.SetorParque.CalcularPagamentoParque </td>
+          <td>(</td>
+          <td class="paramtype">decimal&#160;</td>
+          <td class="paramname"><em>taxaHora</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DateTime&#160;</td>
+          <td class="paramname"><em>entrada</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calcula o Pagamento, valor calculado em Horas, para pagamento na retirada do veiculo </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_t_p_o_o__a26046_1_1_setor_parque_a6a6f5c979547a73102f7943e5a6e0fc8_icgraph.png" border="0" usemap="#aclass_t_p_o_o__a26046_1_1_setor_parque_a6a6f5c979547a73102f7943e5a6e0fc8_icgraph" alt=""/></div>
+<map name="aclass_t_p_o_o__a26046_1_1_setor_parque_a6a6f5c979547a73102f7943e5a6e0fc8_icgraph" id="aclass_t_p_o_o__a26046_1_1_setor_parque_a6a6f5c979547a73102f7943e5a6e0fc8_icgraph">
+<area shape="rect" title=" " alt="" coords="240,5,426,48"/>
+<area shape="rect" href="class_t_p_o_o__a26046_1_1_setor_parque.html#a4a97fa9a89970616213ff61c6a765f4f" title=" " alt="" coords="5,5,192,48"/>
+<area shape="poly" title=" " alt="" coords="224,29,192,29,192,24,224,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a06e8603973a9d0a48745b7d569ea227c" name="a06e8603973a9d0a48745b7d569ea227c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06e8603973a9d0a48745b7d569ea227c">&#9670;&#160;</a></span>CalcularTotalTaxaEstacionamento()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">decimal TPOO_a26046.SetorParque.CalcularTotalTaxaEstacionamento </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calcula a soma das taxas de estacionamento pagas por setor </p>
+
+</div>
+</div>
+<a id="a4a97fa9a89970616213ff61c6a765f4f" name="a4a97fa9a89970616213ff61c6a765f4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a97fa9a89970616213ff61c6a765f4f">&#9670;&#160;</a></span>EstacionaVeiculo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TPOO_a26046.SetorParque.EstacionaVeiculo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_t_p_o_o__a26046_1_1_veiculo.html">Veiculo</a>&#160;</td>
+          <td class="paramname"><em>veiculoEstaciona</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Regista o início do estacionamento do Veículo </p>
+<p>Verifica se o Setor está já cheio</p>
+<p>Verifica se o Setor permite o tipo de veiculo</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_t_p_o_o__a26046_1_1_setor_parque_a4a97fa9a89970616213ff61c6a765f4f_cgraph.png" border="0" usemap="#aclass_t_p_o_o__a26046_1_1_setor_parque_a4a97fa9a89970616213ff61c6a765f4f_cgraph" alt=""/></div>
+<map name="aclass_t_p_o_o__a26046_1_1_setor_parque_a4a97fa9a89970616213ff61c6a765f4f_cgraph" id="aclass_t_p_o_o__a26046_1_1_setor_parque_a4a97fa9a89970616213ff61c6a765f4f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,39,192,81"/>
+<area shape="rect" href="class_t_p_o_o__a26046_1_1_setor_parque.html#a6a6f5c979547a73102f7943e5a6e0fc8" title=" " alt="" coords="240,5,426,48"/>
+<area shape="poly" title=" " alt="" coords="192,44,224,39,225,45,192,49"/>
+<area shape="rect" href="class_t_p_o_o__a26046_1_1_setor_parque.html#a119fb17f4b66d8e48181359a66d34dfe" title=" " alt="" coords="240,72,426,115"/>
+<area shape="poly" title=" " alt="" coords="192,71,225,75,224,81,192,76"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2ec2352af0aa1763bfd37cc498756a96" name="a2ec2352af0aa1763bfd37cc498756a96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ec2352af0aa1763bfd37cc498756a96">&#9670;&#160;</a></span>FimEstacionamentoVeiculo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TPOO_a26046.SetorParque.FimEstacionamentoVeiculo </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>matriculaVeiculo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>setorEstacionado</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_t_p_o_o__a26046_1_1_parque_hospitalar.html">ParqueHospitalar</a>&#160;</td>
+          <td class="paramname"><em>parqueHospital</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Regista a Saída do veiculo do estacionamento </p>
+<p>Cria Registo Estacionamento antes de remover o veiculo do Estacionamento</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_t_p_o_o__a26046_1_1_setor_parque_a2ec2352af0aa1763bfd37cc498756a96_cgraph.png" border="0" usemap="#aclass_t_p_o_o__a26046_1_1_setor_parque_a2ec2352af0aa1763bfd37cc498756a96_cgraph" alt=""/></div>
+<map name="aclass_t_p_o_o__a26046_1_1_setor_parque_a2ec2352af0aa1763bfd37cc498756a96_cgraph" id="aclass_t_p_o_o__a26046_1_1_setor_parque_a2ec2352af0aa1763bfd37cc498756a96_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,192,48"/>
+<area shape="rect" href="class_t_p_o_o__a26046_1_1_parque_hospitalar.html#aea8155f28b045559fab56d40c2a179dc" title=" " alt="" coords="240,5,453,48"/>
+<area shape="poly" title=" " alt="" coords="192,24,224,24,224,29,192,29"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a119fb17f4b66d8e48181359a66d34dfe" name="a119fb17f4b66d8e48181359a66d34dfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a119fb17f4b66d8e48181359a66d34dfe">&#9670;&#160;</a></span>SetorCheio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool TPOO_a26046.SetorParque.SetorCheio </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Para verificar e indicar que o setor já se encontra cheio, sem lugares disponíveis </p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_t_p_o_o__a26046_1_1_setor_parque_a119fb17f4b66d8e48181359a66d34dfe_icgraph.png" border="0" usemap="#aclass_t_p_o_o__a26046_1_1_setor_parque_a119fb17f4b66d8e48181359a66d34dfe_icgraph" alt=""/></div>
+<map name="aclass_t_p_o_o__a26046_1_1_setor_parque_a119fb17f4b66d8e48181359a66d34dfe_icgraph" id="aclass_t_p_o_o__a26046_1_1_setor_parque_a119fb17f4b66d8e48181359a66d34dfe_icgraph">
+<area shape="rect" title=" " alt="" coords="240,5,426,48"/>
+<area shape="rect" href="class_t_p_o_o__a26046_1_1_setor_parque.html#a4a97fa9a89970616213ff61c6a765f4f" title=" " alt="" coords="5,5,192,48"/>
+<area shape="poly" title=" " alt="" coords="224,29,192,29,192,24,224,24"/>
+</map>
+</div>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_setores_parque_8cs.html">SetoresParque.cs</a></li>
+<li>C:/Users/migue/OneDrive/Documentos/GitHub/TPOO_a26046/<a class="el" href="_setores_parque_8cs.html">SetoresParque.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

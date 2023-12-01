@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Sistema de Gestão do Parque do Hospital<span id="projectnumber">&#160;Fase.1</span>
+   <div id="projectname">Sistema de Gestão do Parque do Hospital<span id="projectnumber">&#160;Fase.2</span>
    </div>
    <div id="projectbrief">Sistema capaz de gerir um parque de estacionamento de um Hospital, com múltiplos setores de estacionamento...</div>
   </td>
@@ -100,9 +100,8 @@ $(document).ready(function(){initNavTree('class_t_p_o_o__a26046_1_1_registo_esta
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a743bb70dc7dd0254b5f36ee9313d1e7f" id="r_a743bb70dc7dd0254b5f36ee9313d1e7f"><td class="memItemLeft" align="right" valign="top"><a id="a743bb70dc7dd0254b5f36ee9313d1e7f" name="a743bb70dc7dd0254b5f36ee9313d1e7f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>RegistoEstacionamento</b> (<a class="el" href="class_t_p_o_o__a26046_1_1_veiculo.html">Veiculo</a> veiculo, DateTime entrada, DateTime saida, decimal taxaEstacionamento)</td></tr>
-<tr class="separator:a743bb70dc7dd0254b5f36ee9313d1e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe9100a0abbb17aebc7b687707636f59" id="r_abe9100a0abbb17aebc7b687707636f59"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_t_p_o_o__a26046_1_1_registo_estacionamento.html#abe9100a0abbb17aebc7b687707636f59">RegistoEstacionamento</a> (<a class="el" href="class_t_p_o_o__a26046_1_1_veiculo.html">Veiculo</a> veiculo, DateTime entrada, DateTime saida, decimal taxaEstacionamento, decimal descontoAplicado, string setorEstacionado)</td></tr>
+<tr class="separator:abe9100a0abbb17aebc7b687707636f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -118,9 +117,69 @@ DateTime&#160;</td><td class="memItemRight" valign="bottom"><b>Saida</b><code> [
 <tr class="memitem:a2106aaed2d233134de3d7260935bb067" id="r_a2106aaed2d233134de3d7260935bb067"><td class="memItemLeft" align="right" valign="top"><a id="a2106aaed2d233134de3d7260935bb067" name="a2106aaed2d233134de3d7260935bb067"></a>
 decimal&#160;</td><td class="memItemRight" valign="bottom"><b>TaxaEstacionamento</b><code> [get, set]</code></td></tr>
 <tr class="separator:a2106aaed2d233134de3d7260935bb067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aede8114148f946e5a18eff9f7b562dfa" id="r_aede8114148f946e5a18eff9f7b562dfa"><td class="memItemLeft" align="right" valign="top"><a id="aede8114148f946e5a18eff9f7b562dfa" name="aede8114148f946e5a18eff9f7b562dfa"></a>
+decimal&#160;</td><td class="memItemRight" valign="bottom"><b>DescontoAplicado</b><code> [get, set]</code></td></tr>
+<tr class="separator:aede8114148f946e5a18eff9f7b562dfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a816616462f3b6f3bceb54e6652791556" id="r_a816616462f3b6f3bceb54e6652791556"><td class="memItemLeft" align="right" valign="top"><a id="a816616462f3b6f3bceb54e6652791556" name="a816616462f3b6f3bceb54e6652791556"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>SetorEstacionado</b><code> [get, set]</code></td></tr>
+<tr class="separator:a816616462f3b6f3bceb54e6652791556"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="abe9100a0abbb17aebc7b687707636f59" name="abe9100a0abbb17aebc7b687707636f59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe9100a0abbb17aebc7b687707636f59">&#9670;&#160;</a></span>RegistoEstacionamento()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TPOO_a26046.RegistoEstacionamento.RegistoEstacionamento </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_t_p_o_o__a26046_1_1_veiculo.html">Veiculo</a>&#160;</td>
+          <td class="paramname"><em>veiculo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DateTime&#160;</td>
+          <td class="paramname"><em>entrada</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DateTime&#160;</td>
+          <td class="paramname"><em>saida</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">decimal&#160;</td>
+          <td class="paramname"><em>taxaEstacionamento</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">decimal&#160;</td>
+          <td class="paramname"><em>descontoAplicado</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>setorEstacionado</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Dados finais do Estacionamento do Veículo </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_registo_estacionamento_8cs.html">RegistoEstacionamento.cs</a></li>
+<li>C:/Users/migue/OneDrive/Documentos/GitHub/TPOO_a26046/<a class="el" href="_registo_estacionamento_8cs.html">RegistoEstacionamento.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
