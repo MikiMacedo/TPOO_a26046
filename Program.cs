@@ -148,21 +148,28 @@ namespace TPOO_a26046
                     case '4':
                         /// Adicionar Veículo de Funcionário do Hospital com direito a Desconto
                         Console.WriteLine();
-                        /// AdicionaVeiculoFuncionario
+                        AdicionarVeiculoFuncionario(parqueHospital);
                         CarregaTecla();
                         break;
 
                     case '5':
                         /// Remover um Veículo de Funcionário do Hospital com direito a Desconto
                         Console.WriteLine();
-                        /// RemoverVeiculoFuncinario
+                        RemoverVeiculoFuncionario(parqueHospital);
                         CarregaTecla();
                         break;
-
+                    
                     case '6':
                         /// Alterar Veículo de Funcionário do Hospital com direito a Desconto
                         Console.WriteLine();
-                        /// AlterarVeiculoFuncionario
+                        AlterarVeiculoFuncionario(parqueHospital);
+                        CarregaTecla();
+                        break;
+
+                    case '7':
+                        /// Lista Veículos de Funcionário do Hospital com direito a Desconto (menu secreto para verificar)
+                        Console.WriteLine();
+                        ListarFuncionarios(parqueHospital);
                         CarregaTecla();
                         break;
 
@@ -926,6 +933,65 @@ namespace TPOO_a26046
             Console.Write("Carregue em qualquer tecla para seguir...");
             Console.ReadKey();
         }
+
+        /** Adiciona os dados de determinada matrícula de um veículo do funcionário que poderá ter direito ao descontos oferecidos no parque de estacionamento */
+        static void AdicionarVeiculoFuncionario(ParqueHospitalar parqueHospital)
+        {
+            Console.WriteLine("\nAdicionar Funcionário");
+
+            Console.Write("Nome do Funcionário: ");
+            string nomeFuncionario = Console.ReadLine();
+
+            Console.Write("Profissão do Funcionário: ");
+            string profissaoFuncionario = Console.ReadLine();
+                
+            Console.Write("Matrícula do Funcionário: ");
+            string matriculaFuncionario = Console.ReadLine();
+
+            VeiculoFuncionario novoVeiculoFuncionario = new VeiculoFuncionario(nomeFuncionario, matriculaFuncionario, profissaoFuncionario);
+            
+           parqueHospital.AdicionaVeiculoFuncionario(novoVeiculoFuncionario);
+        }
+
+        /** Altera os dados de determinada matrícula de um veículo do funcionário que poderá ter direito ao descontos oferecidos no parque de estacionamento */
+        static void AlterarVeiculoFuncionario(ParqueHospitalar parqueHospital)
+        {
+            Console.WriteLine("\nAlterar Dados do Funcionário");
+            Console.Write("Matrícula do Funcionário a ser alterado: ");
+            string matriculaFuncionario = Console.ReadLine();
+
+            parqueHospital.AlteraVeiculoFuncionario(matriculaFuncionario);
+        }
+
+        /** Remove um funcionário e o seu veículo para deixar de ter direito aos descontos oferecidos no parque de estacionamento */
+        static void RemoverVeiculoFuncionario(ParqueHospitalar parqueHospital)
+        {
+            Console.WriteLine("\nRemover Funcionário");
+
+            Console.Write("Matrícula do Funcionário a ser removido: ");
+            string matriculaFuncionario = Console.ReadLine();
+
+            parqueHospital.RemoveVeiculoFuncionario(matriculaFuncionario);
+        }   
+
+        /** Lista todos os funcionários e o seu veículo que pode ter direito aos descontos no parque de estacionamento */
+        static void ListarFuncionarios(ParqueHospitalar parqueHospital)
+        {
+            Console.Clear();
+            Console.WriteLine(); 
+            Console.WriteLine("\n+----------------------------------------------------------------------------------------------------------+"); 
+            Console.WriteLine("|           LISTA DE FUNCIONÁRIOS COM DIREITO A DESCONTO NO PARQUE DE ESTACIONAMENTO DO HOSPITAL           |");
+            Console.WriteLine("+-------------------------------------------------------+---------------------------+----------------------+");
+            Console.WriteLine("|                  Nome do Funcionário                  | Profissão do Funcionário  | Matrícula do Veículo |");
+            Console.WriteLine("+-------------------------------------------------------+---------------------------+----------------------+");
+
+            foreach (var funcionario in parqueHospital.VeiculosFuncionarios)
+            {
+                Console.WriteLine($"| {funcionario.NomeFuncionario,-53} | {funcionario.ProfissaoFuncionario,-25} |  {funcionario.MatriculaFuncionario,18}  |");
+            }
+            Console.WriteLine("+-------------------------------------------------------+---------------------------+----------------------+");
+        }
+        
     }
 }
 

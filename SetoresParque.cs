@@ -18,7 +18,6 @@ namespace TPOO_a26046
         public string NomeSetor { get; set; }
         public int Capacidade { get; set; }
         public List<Veiculo> Veiculos { get; set; }  /// Lista dos Veiculos Estacionados
-        public List<VeiculoFuncionario> VeiculosFuncionarios { get; set; }  /// Lista dos veículos dos funcionários
         public Dictionary<string, decimal> PagamentoHoraPorTipoVeiculo { get; set; }
         public List<string> TiposVeiculosPermitidos { get; set; }  /// Lista dos Veículos Permitidos no Setor
         public decimal PercentagemDescontoFuncionarios { get; set; }
@@ -34,7 +33,6 @@ namespace TPOO_a26046
             TiposVeiculosPermitidos = tipoVeiculosPermitidos;
             PercentagemDescontoFuncionarios = percentagemDescontoFuncionarios;
             HistoricoParque = new List<RegistoEstacionamento>();
-            VeiculosFuncionarios = new List<VeiculoFuncionario>();
         }
 
         /** Para verificar e indicar que o setor já se encontra cheio, sem lugares disponíveis */
@@ -132,6 +130,6 @@ namespace TPOO_a26046
         }
 
     }
-    
+
 }
 
