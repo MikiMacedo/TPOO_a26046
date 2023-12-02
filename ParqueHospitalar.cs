@@ -36,31 +36,35 @@ namespace TPOO_a26046
         /** Verifica se a Matrícula já existe nos veículos já estacionados */
         public bool VerificarPorMatriculasExistentes(string matriculaVeiculo)
         {
-            /// Verifica se já existe a matrícula em todos os setores existentes
-            foreach (var setor in SetoresParque)
+            foreach (var setor in SetoresParque) // Verifica se já existe a matrícula em todos os setores existentes
             {
                 if (setor.Veiculos.Exists(veiculo => veiculo.MatriculaVeiculo == matriculaVeiculo))
                 {
-                    return true; /// Matrícula já existente
+                    return true; // Matrícula já existente
                 }
             }
-            return false; /// A Matrícula ainda não existe
+            return false; // A Matrícula ainda não existe
         }
 
-        //* Adiciona veiculo de Funcionario à listagem dos veiculos de funcionários com direito a desconto */
+        /** Adiciona veiculo de Funcionario à listagem dos veiculos de funcionários com direito a desconto */
         public void AdicionaVeiculoFuncionario(VeiculoFuncionario novoVeiculoFuncionario)
         {
-            // Verifica se a matrícula já existe
-            if (VeiculosFuncionarios.Any(f => f.MatriculaFuncionario == novoVeiculoFuncionario.MatriculaFuncionario))
+            if (VeiculosFuncionarios.Any(f => f.MatriculaFuncionario == novoVeiculoFuncionario.MatriculaFuncionario)) // Verifica se a matrícula já existe
             {
-                Console.WriteLine("Já existe um funcionário com essa matrícula.");
+                Console.Clear(); // Mensagem de Erro
+                Console.WriteLine();
+                Console.WriteLine("\n+------------------------------------+");
+                Console.WriteLine("|      MATRÍCULA JÁ REGISTADA !      |");
+                Console.WriteLine("|                                    |");
+                Console.WriteLine("|    Já exista um funcionário com    |");
+                Console.WriteLine("|    com a matrícula indicada...     |");
+                Console.WriteLine("+------------------------------------+"); 
             }
             else
             {
-                // Adiciona o funcionário à lista
-                VeiculosFuncionarios.Add(novoVeiculoFuncionario);
+                VeiculosFuncionarios.Add(novoVeiculoFuncionario); // Adiciona o funcionário à lista
 
-                Console.Clear();
+                Console.Clear(); // Mostra Relatório com as informações do Novo Funcionário adicionado
                 Console.WriteLine();
                 Console.WriteLine("+--------------------------------------------------------------------------------------+");
                 Console.WriteLine($"| Adicionado com sucesso o Funcionário do veículo com a matrícula: {novoVeiculoFuncionario.MatriculaFuncionario,-19} |");
@@ -72,18 +76,16 @@ namespace TPOO_a26046
             }
         }
 
-        //* Remove veiculo de Funcionario da listagem dos veiculos dos funcionários com direito a desconto */
+        /** Remove veiculo de Funcionario da listagem dos veiculos dos funcionários com direito a desconto */
         public void RemoveVeiculoFuncionario(string matriculaFuncionario)
         {
+            VeiculoFuncionario veiculoRemover = VeiculosFuncionarios.FirstOrDefault(vf => vf.MatriculaFuncionario == matriculaFuncionario); // Procura o funcionário pela matrícula para remover
 
-            /// Procura o funcionário pela matrícula para remover
-            VeiculoFuncionario veiculoRemover = VeiculosFuncionarios.FirstOrDefault(vf => vf.MatriculaFuncionario == matriculaFuncionario);
-
-            if (matriculaFuncionario != null)
+            if (veiculoRemover != null) // Verifica se o funcionário foi encontrado
             {
-                VeiculosFuncionarios.Remove(veiculoRemover);
+                VeiculosFuncionarios.Remove(veiculoRemover); // Remove Funcionário
 
-                Console.Clear();
+                Console.Clear(); // Mostra relatório de Remoção da Matrícula do Funcionário
                 Console.WriteLine();
                 Console.WriteLine("+--------------------------------------------------------------------------------------+");
                 Console.WriteLine($"| Removido com sucesso o Funcionário com o veículo com a matrícula: {matriculaFuncionario,-18} |");
@@ -91,11 +93,14 @@ namespace TPOO_a26046
             }
             else
             {
-                Console.Clear();
+                Console.Clear(); // Mensagem de Erro
                 Console.WriteLine();
-                Console.WriteLine("+--------------------------------------------------------------------------------------+");
-                Console.WriteLine($"|   Nenhum Funcionário com a matrícula {matriculaFuncionario,-18}. Verifique a matrícula   |");
-                Console.WriteLine("+--------------------------------------------------------------------------------------+");
+                Console.WriteLine("+----------------------------------+");
+                Console.WriteLine("|     MATRICULA NÃO ENCONTRADA     |");
+                Console.WriteLine("|                                  |");
+                Console.WriteLine("|  Não encontrado Funcionário com  |");
+                Console.WriteLine($"|  o veículo {matriculaFuncionario,-20}  |");
+                Console.WriteLine("+----------------------------------+");
             }
 
         }
@@ -103,37 +108,35 @@ namespace TPOO_a26046
         /** Altera veiculo de Funcionario da listagem dos veiculos dos funcionários com direito a desconto */
         public void AlteraVeiculoFuncionario(string matriculaFuncionario)
         {
+            VeiculoFuncionario veiculoAlterar = VeiculosFuncionarios.FirstOrDefault(vf => vf.MatriculaFuncionario == matriculaFuncionario); // Procura o funcionário pela matrícula para alterar
 
-            /// Procura o funcionário pela matrícula para alterar
-            VeiculoFuncionario veiculoAlterar = VeiculosFuncionarios.FirstOrDefault(vf => vf.MatriculaFuncionario == matriculaFuncionario);
-
-            if (veiculoAlterar != null)
+            if (veiculoAlterar != null) // Verifica a matrícula para alterar foi encontrada
             {
                 Console.Write("Alterar dados do Nome para (deixar em branco se quiser manter o nome): ");
                 string novoNome = Console.ReadLine();
-                veiculoAlterar.NomeFuncionario = string.IsNullOrWhiteSpace(novoNome) ? veiculoAlterar.NomeFuncionario : novoNome;
+                veiculoAlterar.NomeFuncionario = string.IsNullOrWhiteSpace(novoNome) ? veiculoAlterar.NomeFuncionario : novoNome; // Verifica se o campo está vazio, se sim os dados antigos serão mantidos
                 if (novoNome != null)
                 {
-                    novoNome = veiculoAlterar.NomeFuncionario;
+                    novoNome = veiculoAlterar.NomeFuncionario; // Guarda os mesmos dados para mostrar
                 }
 
                 Console.Write("Alterar Matrícula do Veículo para (deixar em branco se quiser manter Matrícula): ");
                 string novaMatricula = Console.ReadLine();
-                veiculoAlterar.MatriculaFuncionario = string.IsNullOrWhiteSpace(novaMatricula) ? veiculoAlterar.MatriculaFuncionario : novaMatricula;
+                veiculoAlterar.MatriculaFuncionario = string.IsNullOrWhiteSpace(novaMatricula) ? veiculoAlterar.MatriculaFuncionario : novaMatricula; // Verifica se o campo está vazio, se sim os dados antigos serão mantidos
                 if (novaMatricula != null)
                 {
-                    novaMatricula = veiculoAlterar.MatriculaFuncionario;
+                    novaMatricula = veiculoAlterar.MatriculaFuncionario; // Guarda os mesmos dados para mostrar
                 }
 
                 Console.Write("Alterar a Profissão para (deixar em branco se quiser manter Profissão): ");
                 string novaProfissao = Console.ReadLine();
-                veiculoAlterar.ProfissaoFuncionario = string.IsNullOrWhiteSpace(novaProfissao) ? veiculoAlterar.ProfissaoFuncionario : novaProfissao;
+                veiculoAlterar.ProfissaoFuncionario = string.IsNullOrWhiteSpace(novaProfissao) ? veiculoAlterar.ProfissaoFuncionario : novaProfissao; // Verifica se o campo está vazio, se sim os dados antigos serão mantidos
                 if (novaProfissao != null)
                 {
-                    novaProfissao = veiculoAlterar.ProfissaoFuncionario;
+                    novaProfissao = veiculoAlterar.ProfissaoFuncionario; // Guarda os mesmos dados para mostrar
                 }
 
-                Console.Clear();
+                Console.Clear(); // Mostra Relatório das novas informações do Funcionário
                 Console.WriteLine();
                 Console.WriteLine("+--------------------------------------------------------------------------------------+");
                 Console.WriteLine($"| Alterado com sucesso dados de {matriculaFuncionario,-19} para matrícula {novaMatricula,19} |");
@@ -145,7 +148,11 @@ namespace TPOO_a26046
             }
             else
             {
-                Console.WriteLine($"Funcionário com o veículo {matriculaFuncionario} não encontrado. Verifique a matrícula.");
+                Console.Clear(); // Mensagem de Erro
+                Console.WriteLine();
+                Console.WriteLine("+--------------------------------------------------------------------------------------+");
+                Console.WriteLine($"|   Nenhum Funcionário com a matrícula {matriculaFuncionario,-18}. Verifique a matrícula   |");
+                Console.WriteLine("+--------------------------------------------------------------------------------------+");
             }
 
         }
@@ -153,7 +160,7 @@ namespace TPOO_a26046
         /** Verifica se o veiculo pertence a um funcionario e devolve true se pertencer, false se não */
         public bool VeiculoPertenceFuncionario(string matriculaVeiculo)
         {
-            return VeiculosFuncionarios.Any(vf => vf.MatriculaFuncionario == matriculaVeiculo);
+            return VeiculosFuncionarios.Any(vf => vf.MatriculaFuncionario == matriculaVeiculo); // Devolve se o veículo pertence a funcionário ou não 'True' se matrícula é de um funcionario, 'False' se não for
         }
     }
 }

@@ -38,7 +38,7 @@ namespace TPOO_a26046
         /** Para verificar e indicar que o setor já se encontra cheio, sem lugares disponíveis */
         public bool SetorCheio()
         {
-            return Veiculos.Count >= Capacidade;
+            return Veiculos.Count >= Capacidade; // Devolve 'true' se Veículos foi igual ou superior à capacidade 
         }
 
         /** Calcula o Pagamento, valor calculado em Horas, para pagamento na retirada do veiculo */
@@ -47,79 +47,93 @@ namespace TPOO_a26046
             DateTime saida = DateTime.Now;
             TimeSpan tempoParque = saida - entrada;
             decimal horasEstacionado = (decimal)tempoParque.TotalHours;
-            return horasEstacionado * taxaHora;
+            return horasEstacionado * taxaHora; // Devolve o valor a pagar
         }
 
         /** Regista o início do estacionamento do Veículo */
         public void EstacionaVeiculo(Veiculo veiculoEstaciona)
         {
-            if (SetorCheio()) /// Verifica se o Setor está já cheio
+            if (SetorCheio()) // Verifica se o Setor está já cheio
             {
+                Console.Clear(); // Mensagem de Erro
                 Console.WriteLine();
-                Console.WriteLine($"O Setor {NomeSetor} está cheio");
+                Console.WriteLine("\n+------------------------------------+");
+                Console.WriteLine("|    O SETOR ESCOLHIDO ESTÁ CHEIO    |");
+                Console.WriteLine("|                                    |");
+                Console.WriteLine($"|  O Setor {NomeSetor,12} está cheio!  |");
+                Console.WriteLine("|   Escolha outro setor no Parque... |");
+                Console.WriteLine("+------------------------------------+");
                 return;
             }
 
-            if (!TiposVeiculosPermitidos.Contains(veiculoEstaciona.VeiculoTipo)) /// Verifica se o Setor permite o tipo de veiculo
+            if (!TiposVeiculosPermitidos.Contains(veiculoEstaciona.VeiculoTipo)) // Verifica se o Setor permite o tipo de veiculo
             {
+                Console.Clear(); // Mensagem de Erro
                 Console.WriteLine();
-                Console.WriteLine($"O Setor {NomeSetor} não permite veículos do tipo {veiculoEstaciona.VeiculoTipo}");
+                Console.WriteLine("\n+------------------------------------+");
+                Console.WriteLine("|   TIPO DE VEÍCULO NÃO PERMITIDO!   |");
+                Console.WriteLine("|                                    |");
+                Console.WriteLine($"|  O Setor {NomeSetor,12} não permite  |");
+                Console.WriteLine($"|   veículos do tipo {veiculoEstaciona.VeiculoTipo,-12}.   |");
+                Console.WriteLine("+------------------------------------+");
                 return;
             }
 
             veiculoEstaciona.Entrada = DateTime.Now;
-            veiculoEstaciona.TaxaEstacionamento = CalcularPagamentoParque(PagamentoHoraPorTipoVeiculo[veiculoEstaciona.VeiculoTipo], veiculoEstaciona.Entrada);
+            veiculoEstaciona.TaxaEstacionamento = CalcularPagamentoParque(PagamentoHoraPorTipoVeiculo[veiculoEstaciona.VeiculoTipo], veiculoEstaciona.Entrada); 
             Veiculos.Add(veiculoEstaciona);
 
-            Console.Clear();
+            Console.Clear(); // Mostra ticket de Estacionamento
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("Impressão do Ticket de Estacionamento...");
+            Console.WriteLine(); 
             Console.WriteLine("\n+----------------------------------+");
             Console.WriteLine($"|    Ticket de Estacionamento      |");
             Console.WriteLine("+------------+---------------------+");
-            Console.WriteLine($"|   Setor    | {NomeSetor,-19} |");
+            Console.WriteLine($"| Setor     | {NomeSetor,-19} |");
             Console.WriteLine("+------------+---------------------+");
-            Console.WriteLine($"|   Entrada  | {DateTime.Now,-18} |");
+            Console.WriteLine($"| Entrada   | {DateTime.Now,-19} |");
+            Console.WriteLine("+------------+---------------------+");
+            Console.WriteLine($"| Taxa/Hora | {veiculoEstaciona.TaxaEstacionamento,-19} |"); 
             Console.WriteLine("+------------+---------------------+");
         }
 
         /** Regista a Saída do veiculo do estacionamento */
         public void FimEstacionamentoVeiculo(string matriculaVeiculo, string setorEstacionado, ParqueHospitalar parqueHospital)
         {
-            Veiculo veiculoRemover = Veiculos.Find(v => v.MatriculaVeiculo == matriculaVeiculo);
-            if (veiculoRemover != null)
+            Veiculo veiculoRemover = Veiculos.Find(v => v.MatriculaVeiculo == matriculaVeiculo); // Procura veículo a remover
+            if (veiculoRemover != null) // verifica se foi encontrado veículo para remover
             {
                 DateTime saida = DateTime.Now;
                 TimeSpan tempoParque = saida - veiculoRemover.Entrada;
                 decimal horasEstacionado = (decimal)tempoParque.TotalHours;
 
-                bool pertenceFuncionario = parqueHospital.VeiculoPertenceFuncionario(matriculaVeiculo);
+                bool pertenceFuncionario = parqueHospital.VeiculoPertenceFuncionario(matriculaVeiculo); // Procura para ver se pertence a funcionário
 
-                if (pertenceFuncionario)
+                if (pertenceFuncionario) // Verifica se pertence a funcionário e aplica Desconto se se 'true' e se 'false' aplica taxa sem desconto
                 {
-                    // Aplica Desconto se tiver direito
-                    veiculoRemover.TaxaEstacionamento = horasEstacionado * PagamentoHoraPorTipoVeiculo[veiculoRemover.VeiculoTipo] * ((100 - PercentagemDescontoFuncionarios) / 100);
+                    veiculoRemover.TaxaEstacionamento = horasEstacionado * PagamentoHoraPorTipoVeiculo[veiculoRemover.VeiculoTipo] * ((100 - PercentagemDescontoFuncionarios) / 100); // Aplica desconto na taxa
                 }
                 else
                 {
                     // Não é funcionario por isso sem desconto
-                    veiculoRemover.TaxaEstacionamento = horasEstacionado * PagamentoHoraPorTipoVeiculo[veiculoRemover.VeiculoTipo];
+                    veiculoRemover.TaxaEstacionamento = horasEstacionado * PagamentoHoraPorTipoVeiculo[veiculoRemover.VeiculoTipo]; // Taxa sem desconto
                 }
 
 
-                /// Cria Registo Estacionamento antes de remover o veiculo do Estacionamento
                 RegistoEstacionamento registoEstacionamento = new RegistoEstacionamento(veiculoRemover, veiculoRemover.Entrada, saida, veiculoRemover.TaxaEstacionamento, PercentagemDescontoFuncionarios, setorEstacionado);
-                HistoricoParque.Add(registoEstacionamento);
+                HistoricoParque.Add(registoEstacionamento); // Cria Registo Estacionamento antes de remover o veiculo do Estacionamento
 
-                Veiculos.Remove(veiculoRemover);
+                Veiculos.Remove(veiculoRemover); // Remove o veiculo do Estacionamento
                 parqueHospital.VeiculoRemovido = true;
-                Console.Clear();
+                Console.Clear(); // Mostra Recibo do Estacionamento
                 Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine("Impressão do Fatura de Estacionamento...");
+                Console.WriteLine();            
+                Console.WriteLine("Impressão do Recibo de Estacionamento...");
+                Console.WriteLine(); 
                 Console.WriteLine("\n+-------------------------------------------+");
-                Console.WriteLine($"|    Fatura do Veículo {matriculaVeiculo,-20} |");
+                Console.WriteLine($"|    Recibo do Veículo {matriculaVeiculo,-20} |");
                 Console.WriteLine("+---------------------+---------------------+");
                 Console.WriteLine("|        Setor        |         Taxa        |");
                 Console.WriteLine("+---------------------+---------------------+");
@@ -129,8 +143,8 @@ namespace TPOO_a26046
                 Console.WriteLine("+---------------------+---------------------+");
                 Console.WriteLine($"| {veiculoRemover.Entrada,-19} | {saida,-19} |");
                 Console.WriteLine("+---------------------+---------------------+");
-                // Se matricula pertencer a funcionário, mostra a percentagem do desconto e o valor descontado
-                if (pertenceFuncionario)
+                
+                if (pertenceFuncionario) // Se matricula pertencer a funcionário, mostra a percentagem do desconto e o valor descontado
                 {
                     Console.WriteLine("| % Desconto aplicado |   Taxa Descontada   |");
                     Console.WriteLine("+---------------------+---------------------+");
@@ -144,7 +158,7 @@ namespace TPOO_a26046
         /** Calcula a soma das taxas de estacionamento pagas por setor */
         public decimal CalcularTotalTaxaEstacionamento()
         {
-            return HistoricoParque.Sum(registo => registo.TaxaEstacionamento);
+            return HistoricoParque.Sum(registo => registo.TaxaEstacionamento); // Devolve o Total de Taxas de Estacionamento pagas de cada setor
         }
 
        

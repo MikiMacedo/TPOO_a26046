@@ -36,7 +36,7 @@ namespace TPOO_a26046
                 Console.WriteLine("|      Nome do Setor      |  Estacionados  | Cheio? | % Desconto |");
                 Console.WriteLine("+----------------------------------------------------------------+");
 
-                if (parqueHospital.SetoresParque.Count == 0) //Não há setores ainda
+                if (parqueHospital.SetoresParque.Count == 0) // Não há setores ainda
                 {
                     Console.WriteLine("|           Ainda não Existem Setores de Estacionamento          |");
                     Console.WriteLine("+----------------------------------------------------------------+");
@@ -44,10 +44,9 @@ namespace TPOO_a26046
                 else
                 {
                     string setorEstaCheio;
-                    foreach (var nomeSetor in parqueHospital.SetoresParque) /// Mostra tabela dos setores existentes
+                    foreach (var nomeSetor in parqueHospital.SetoresParque) // Mostra tabela dos setores existentes
                     {
-                        ///Transformar um valor booleano em "Sim" ou "Não" para indicar se o setor está cheio
-                        if (nomeSetor.SetorCheio())
+                        if (nomeSetor.SetorCheio()) // Transformar um valor booleano em "Sim" ou "Não" para indicar se o setor está cheio
                         {
                             setorEstaCheio = "Sim";
                         }
@@ -55,8 +54,7 @@ namespace TPOO_a26046
                         {
                             setorEstaCheio = "Não";
                         }
-                        /// Faz a tabela com os dados dos setores, os valores são para definir o tamanho na tabela, negativos alinhados à esquerda, positivos alinhados à direita
-                        Console.WriteLine($"| {nomeSetor.NomeSetor,-23} |       {nomeSetor.Veiculos.Count,8} | {setorEstaCheio,6} | {nomeSetor.PercentagemDescontoFuncionarios,7} %  |");
+                        Console.WriteLine($"| {nomeSetor.NomeSetor,-23} |       {nomeSetor.Veiculos.Count,8} | {setorEstaCheio,6} | {nomeSetor.PercentagemDescontoFuncionarios,7} %  |"); // Faz a tabela com os dados dos setores, os valores são para definir o tamanho na tabela, negativos alinhados à esquerda, positivos alinhados à direita
                     }
                     Console.WriteLine("+----------------------------------------------------------------+");
                 }
@@ -78,19 +76,23 @@ namespace TPOO_a26046
                 switch ((char)opcaoMenu.Key)
                 {
                     case '1':
+                        /** Menu de Gestão */
                         MenuGerirParque(parqueHospital, TiposDeVeiculos);
                         break;
 
                     case '2':
+                        /** Menu do Utilizador do Parque (Estacionar e Remover o veículo do Estacionamento */
                         MenuUtilizador(parqueHospital, TiposDeVeiculos);
                         break;
 
                     case '3':
+                        /** Menu de Estatísticas e Informações sobre o Parque de Estacionamento e seus setores */
                         Console.WriteLine();
                         MenuEstatisticas(parqueHospital);
                         break;
 
                     case '0':
+                        /** Sai do Programa de Gestão do Sistema do Parque Hospitalar */
                         return;
 
                     default:
@@ -125,48 +127,49 @@ namespace TPOO_a26046
                 switch ((char)opcaoGestao.Key)
                 {
                     case '1':
-                        /// Adicionar um novo Setor ao Parque
+                        /** Adicionar um novo Setor ao Parque */
                         Console.WriteLine();
                         AdicionarSetor(parqueHospital, TiposDeVeiculos);
                         CarregaTecla();
                         break;
 
                     case '2':
-                        /// Remover um Setor do Parque
+                        /** Remover um Setor do Parque */
                         Console.WriteLine();
                         RemoverSetor(parqueHospital);
                         CarregaTecla();
                         break;
 
                     case '3':
-                        /// Alterar um Setor já existente do Parque
+                        /** Alterar um Setor já existente do Parque */
                         Console.WriteLine();
                         AlterarSetor(parqueHospital, TiposDeVeiculos);
                         CarregaTecla();
                         break;
 
                     case '4':
-                        /// Adicionar Veículo de Funcionário do Hospital com direito a Desconto
+                        /** Adicionar Veículo de Funcionário do Hospital com direito a Desconto */
                         Console.WriteLine();
                         AdicionarVeiculoFuncionario(parqueHospital);
                         CarregaTecla();
                         break;
 
                     case '5':
-                        /// Remover um Veículo de Funcionário do Hospital com direito a Desconto
+                        /** Remover um Veículo de Funcionário do Hospital com direito a Desconto */
                         Console.WriteLine();
                         RemoverVeiculoFuncionario(parqueHospital);
                         CarregaTecla();
                         break;
                     
                     case '6':
-                        /// Alterar Veículo de Funcionário do Hospital com direito a Desconto
+                        /** Alterar Veículo de Funcionário do Hospital com direito a Desconto */
                         Console.WriteLine();
                         AlterarVeiculoFuncionario(parqueHospital);
                         CarregaTecla();
                         break;
 
                     case '0':
+                        /** Volta ao Menu Principal */
                         return;
 
                     default:
@@ -196,21 +199,21 @@ namespace TPOO_a26046
                 switch ((char)opcaoUtilizador.Key)
                 {
                     case '1':
-                        /// Estacionar o veiculo no Parque
+                        /** Estacionar o veiculo no Parque */
                         Console.WriteLine();
                         EstacionarVeiculo(parqueHospital, TiposDeVeiculos);
                         CarregaTecla();
                         break;
 
                     case '2':
-                        /// Remover o veículo do estacionamento do Parque e pagar Estacionamento
+                        /** Remover o veículo do estacionamento do Parque e pagar Estacionamento */
                         Console.WriteLine();
                         RemoverVeiculo(parqueHospital);
                         CarregaTecla();
                         break;
 
                     case '0':
-                        /// Volta ao Menu Principal
+                        /** Volta ao Menu Principal */
                         return;
 
                     default:
@@ -239,39 +242,39 @@ namespace TPOO_a26046
                 Console.Write("    Escolhe uma opção de 0 a 4: ");
 
 
-                ConsoleKeyInfo opcaoEstatitica = Console.ReadKey(); /// Recebe a tecla carregada para opção
+                ConsoleKeyInfo opcaoEstatitica = Console.ReadKey(); // Recebe a tecla carregada para opção
 
                 switch ((char)opcaoEstatitica.Key)
                 {
                     case '1':
-                        /// Estatísticas do Setor
+                        /** Estatísticas do Setor */
                         EstatisticasSetor(parqueHospital);
                         break;
 
                     case '2':
-                        /// Menu das Estatísticas dos Veículos
+                        /** Menu das Estatísticas dos Veículos */
                         MenuEstatisticasVeiculos(parqueHospital);
                         break;
 
                     case '3':
-                        /// Histórico de Estacionamento por Matrícula
+                        /** Histórico de Estacionamento por Matrícula de veículo */
                         MostrarHistoricoVeiculo(parqueHospital);
                         break;
 
                     case '4':
-                        /// Mostrar o total de receitas do Parque (Total de Pagamentos de todos os Setores)
+                        /** Mostrar o total de receitas do Parque (Total de Pagamentos de todos os Setores) */
                         MostrarTotalPagamentosParque(parqueHospital);
                         break;
 
                     case '5':
-                        /// Lista Veículos de Funcionário do Hospital com direito a Desconto (menu secreto para verificar)
+                        /** Lista Veículos de Funcionário do Hospital com direito a Desconto */
                         Console.WriteLine();
                         ListarFuncionarios(parqueHospital);
                         CarregaTecla();
                         break;
 
                     case '0':
-                        /// Voltar ao Menu Principal
+                        /** Volta ao Menu Principal */
                         return;
 
                     default:
@@ -295,22 +298,22 @@ namespace TPOO_a26046
             Console.WriteLine(" ");
             Console.Write("    Escolhe uma opção de 0 a 2: ");
 
-            ConsoleKeyInfo opcaoEstatisticaVeiculos = Console.ReadKey(); /// Recebe a tecla carregada para opção
+            ConsoleKeyInfo opcaoEstatisticaVeiculos = Console.ReadKey(); // Recebe a tecla carregada para opção
 
             switch ((char)opcaoEstatisticaVeiculos.Key)
             {
                 case '1':
-                    /// Lista todos os Veículos
+                    /** Lista todos os Veículos que ainda estão no estacionamento (ainda não pagaram nem sairam do Parque) */
                     ListaTodosVeiculos(parqueHospital);
                     break;
 
                 case '2':
-                    /// Lista os Veiculos por Setor
+                    /** Lista os Veiculos estacionados por Setor (que ainda não pagaram nem sairam do Parque) */
                     ListaVeiculosPorSetor(parqueHospital);
                     break;
 
                 case '0':
-                    /// Volta ao Menu de Estatísticas
+                    /** Volta ao Menu de Estatísticas */
                     return;
 
                 default:
@@ -327,14 +330,14 @@ namespace TPOO_a26046
             Console.WriteLine("|  Adicionar um Novo Setor ao Parque |");
             Console.WriteLine("+------------------------------------+"); 
             Console.WriteLine();
-            Console.Write("Nome do Setor: ");  /// Para escrever o nome do novo Setor
+            Console.Write("Nome do Setor: ");  // Para escrever o nome do novo Setor
             string nomeSetor = Console.ReadLine();
             
-            if (!string.IsNullOrWhiteSpace(nomeSetor))
+            if (!string.IsNullOrWhiteSpace(nomeSetor)) // Verifica se o nome do setor não está vazio, se estiver mostra mensagem de erro
             {
-                if (parqueHospital.SetoresParque.Any(setor => setor.NomeSetor == nomeSetor))
+                if (parqueHospital.SetoresParque.Any(setor => setor.NomeSetor == nomeSetor)) // Verifica se já existe um Setor com o mesmo nome, para evitar repetição do nome
                 {
-                    Console.Clear();
+                    Console.Clear(); // Mensagem de Erro
                     Console.WriteLine();
                     Console.WriteLine("\n+------------------------------------+");
                     Console.WriteLine("|          SETOR JÁ EXISTE!          |");
@@ -346,18 +349,18 @@ namespace TPOO_a26046
                 }
                 else
                 {
-                    Console.Write("Capacidade do Setor: "); /// Para definir a capacidade do Setor
+                    Console.Write("Capacidade do Setor: "); // Para definir a capacidade do Setor
                     if (int.TryParse(Console.ReadLine(), out int capacidadeSetor))
                     {
-                        Console.Write("Desconto para Funcionários no Setor: "); /// Para definir a desconto dos funcionários no Setor
+                        Console.Write("Desconto para Funcionários no Setor: "); // Para definir a desconto dos funcionários no Setor
                         if (decimal.TryParse(Console.ReadLine(), out decimal percentagemDescontoFuncionarios))
                         {
-                            if (percentagemDescontoFuncionarios >= 0 && percentagemDescontoFuncionarios <= 100)
+                            if (percentagemDescontoFuncionarios >= 0 && percentagemDescontoFuncionarios <= 100) // Verifica se foi inserido um Desconto para Funcionário Válido (entre 0 e 100)
                             {
-                                List<string> tipoVeiculosPermitidos = RetiraTipoVeiculosPermitidos(TiposDeVeiculos); ///Para definir os tipos de veículos permitidos no Setor
-                                if (tipoVeiculosPermitidos.Count == 0)
+                                List<string> tipoVeiculosPermitidos = RetiraTipoVeiculosPermitidos(TiposDeVeiculos); // Para definir os tipos de veículos permitidos no Setor
+                                if (tipoVeiculosPermitidos.Count == 0) // Verifica se há tipos de carros inseridos válidos e senão mostra mensagem de erro
                                 {
-                                    Console.Clear();
+                                    Console.Clear(); // Mensagem de Erro
                                     Console.WriteLine();
                                     Console.WriteLine("\n+------------------------------------+");
                                     Console.WriteLine("|     TIPO DE VEICULO NECESSÁRIO     |");
@@ -368,9 +371,9 @@ namespace TPOO_a26046
                                     return;
                                 }
                                 Dictionary<string, decimal> pagamentoHora = RetiraPagamentoHora(tipoVeiculosPermitidos);
-                                if (pagamentoHora.Count == 0)
+                                if (pagamentoHora.Count == 0) // Verifica se foi inserido o custo/hora válido e se não mostra mensagem de erro
                                 {
-                                    Console.Clear();
+                                    Console.Clear(); // Mensagem de Erro
                                     Console.WriteLine();
                                     Console.WriteLine("\n+------------------------------------+");
                                     Console.WriteLine("|      NECESSÁRIO O CUSTO/HORA!      |");
@@ -383,8 +386,8 @@ namespace TPOO_a26046
 
 
                                 SetorParque novoSetor = new SetorParque(nomeSetor, capacidadeSetor, pagamentoHora, tipoVeiculosPermitidos, percentagemDescontoFuncionarios);
-                                parqueHospital.AdicionaSetor(novoSetor);
-                                Console.Clear();
+                                parqueHospital.AdicionaSetor(novoSetor); // Adiciona Novo Setor
+                                Console.Clear(); // Imprime relatório com informações do Novo Setor
                                 Console.WriteLine();
                                 Console.WriteLine("\n+------------------------------------+");
                                 Console.WriteLine("|  ADICIONADO NOVO SETOR AO PARQUE   |");
@@ -406,7 +409,7 @@ namespace TPOO_a26046
                             }
                             else
                             {
-                                Console.Clear();
+                                Console.Clear(); // Mensagem de Erro
                                 Console.WriteLine();
                                 Console.WriteLine("\n+------------------------------------+");
                                 Console.WriteLine("|         DESCONTO INVÁLIDO!         |");
@@ -418,7 +421,7 @@ namespace TPOO_a26046
                         }
                         else
                         {
-                            Console.Clear();
+                            Console.Clear(); // Mensagem de Erro
                             Console.WriteLine();
                             Console.WriteLine("\n+------------------------------------+");
                             Console.WriteLine("|         DESCONTO INVÁLIDO!         |");
@@ -430,7 +433,7 @@ namespace TPOO_a26046
                     }
                     else
                     {
-                        Console.Clear();
+                        Console.Clear(); // Mensagem de Erro
                         Console.WriteLine();
                         Console.WriteLine("\n+------------------------------------+");
                         Console.WriteLine("|        CAPACIDADE INVÁLIDA!        |");
@@ -443,7 +446,7 @@ namespace TPOO_a26046
             }
             else
             {
-                Console.Clear();
+                Console.Clear(); // Mensagem de Erro
                 Console.WriteLine();
                 Console.WriteLine("\n+------------------------------------+");
                 Console.WriteLine("|      NOME DE SETOR INVÁLIDO !      |");
@@ -470,12 +473,12 @@ namespace TPOO_a26046
             {
                 string estadoEstacionamento = parqueHospital.SetoresParque[i].Veiculos.Count > 0 ? "Tem veículos estacionados" : "Vazio, pode remover";
                 Console.WriteLine(" " + (i + 1) + " - " + parqueHospital.SetoresParque[i].NomeSetor + " (" + estadoEstacionamento + ").");
-                verificaSetor = true; /// Para verificar se há setores, true significa que foi entrado o setor
+                verificaSetor = true; // Para verificar se há setores, true significa que foi encontrados o setores, false quando não há setores registados
             }
 
-            if (!verificaSetor) /// Não existem Setores
+            if (!verificaSetor) // Não existem Setores
             {
-                Console.Clear();
+                Console.Clear(); // Mensagem de Erro
                 Console.WriteLine();
                 Console.WriteLine("\n+----------------------------------------+");
                 Console.WriteLine("|       SEM SETORES PARA REMOVER !       |");
@@ -483,13 +486,13 @@ namespace TPOO_a26046
                 return;
             }
 
-            Console.Write("Coloque o número do setor a remover, conforme tabela, ou qualquer outros para desistir: ");  ///Existem Setores para remover
-            if (int.TryParse(Console.ReadLine(), out int nomeSetor) && nomeSetor >= 1 && nomeSetor <= parqueHospital.SetoresParque.Count)
+            Console.Write("Coloque o número do setor a remover, conforme tabela, ou qualquer outros para desistir: ");  // Existem Setores para remover, para escolher o que se quer remover
+            if (int.TryParse(Console.ReadLine(), out int nomeSetor) && nomeSetor >= 1 && nomeSetor <= parqueHospital.SetoresParque.Count) // Verifica se Setor escolhido é válido
             {
                 int refSetorRemover = nomeSetor - 1;
-                if (parqueHospital.SetoresParque[refSetorRemover].Veiculos.Count > 0)
+                if (parqueHospital.SetoresParque[refSetorRemover].Veiculos.Count > 0) //  Verifica se há veículos estacionados, se sim, não deixa remover e mostra mensagem de erro
                 {
-                    Console.Clear();
+                    Console.Clear(); // Mensagem de Erro
                     Console.WriteLine();
                     Console.WriteLine("\n+----------------------------------------+");
                     Console.WriteLine("| SETOR QUE TENTOU REMOVER TEM VEICULOS! |");
@@ -502,12 +505,12 @@ namespace TPOO_a26046
                 }
                 else
                 { 
-                    if (refSetorRemover >= 0 && refSetorRemover < parqueHospital.SetoresParque.Count)
+                    if (refSetorRemover >= 0 && refSetorRemover < parqueHospital.SetoresParque.Count) // Verifica se Setor escolhido existe para remover
                     {
-                        string setorRemovido = parqueHospital.SetoresParque[refSetorRemover].NomeSetor; /// antes de remover o setor guarda o seu nome para imprimir no ecrã na mensagem de remoção
-                        parqueHospital.SetoresParque.RemoveAt(refSetorRemover); /// Remove o setor escolhido
+                        string setorRemovido = parqueHospital.SetoresParque[refSetorRemover].NomeSetor; // antes de remover o setor guarda o seu nome para imprimir no ecrã na mensagem de remoção
+                        parqueHospital.SetoresParque.RemoveAt(refSetorRemover); // Remove o setor escolhido
 
-                        Console.Clear();
+                        Console.Clear(); // Relatório com informação sobre o setor removido
                         Console.WriteLine();
                         Console.WriteLine("\n+------------------------------------+");
                         Console.WriteLine("|      FOI REMOVIDO DO PARQUE DE     |");
@@ -520,7 +523,7 @@ namespace TPOO_a26046
                     }
                     else
                     {
-                        Console.Clear();
+                        Console.Clear(); // Mensagem de Erro, Número inválido, logo pode indicar desistância da remoção
                         Console.WriteLine();
                         Console.WriteLine("\n+------------------------------------+");
                         Console.WriteLine("|      DESISTÊNCIA DA REMOÇÃO !      |");
@@ -534,7 +537,7 @@ namespace TPOO_a26046
             }
             else
             {
-                Console.Clear();
+                Console.Clear(); // Mensagem de Erro, Número inválido, logo pode indicar desistância da remoção
                 Console.WriteLine();
                 Console.WriteLine("\n+------------------------------------+");
                 Console.WriteLine("|      DESISTÊNCIA DA REMOÇÃO !      |");
@@ -557,8 +560,7 @@ namespace TPOO_a26046
             Console.Write("Nome do Setor a ser alterado: ");
             string nomeSetor = Console.ReadLine();
 
-            // Procura o setor pelo nome
-            SetorParque setorExistente = parqueHospital.SetoresParque.FirstOrDefault(s => s.NomeSetor == nomeSetor);
+            SetorParque setorExistente = parqueHospital.SetoresParque.FirstOrDefault(s => s.NomeSetor == nomeSetor); // Procura o setor pelo nome
 
             if (setorExistente != null)
             {
@@ -568,11 +570,11 @@ namespace TPOO_a26046
                 Console.Write("Novo Nome do Setor: ");
                 string novoNomeSetor = Console.ReadLine();
 
-                if (!string.IsNullOrWhiteSpace(novoNomeSetor))
+                if (!string.IsNullOrWhiteSpace(novoNomeSetor)) // Verifica se o nome está vazio
                 {
-                    if ((nomeSetor != novoNomeSetor) && (parqueHospital.SetoresParque.Any(setor => setor.NomeSetor == nomeSetor)))
+                    if ((nomeSetor != novoNomeSetor) && (parqueHospital.SetoresParque.Any(setor => setor.NomeSetor == nomeSetor))) // Verifica se o nome já existe, se sim, mostra mensagem de erro
                     {
-                        Console.Clear();
+                        Console.Clear(); // Mensagem de Erro
                         Console.WriteLine();
                         Console.WriteLine("\n+------------------------------------+");
                         Console.WriteLine("|          SETOR JÁ EXISTE!          |");
@@ -585,17 +587,17 @@ namespace TPOO_a26046
                     else
                     {
                         Console.Write("Nova Capacidade do Setor: ");
-                        if (int.TryParse(Console.ReadLine(), out int novaCapacidadeSetor))
+                        if (int.TryParse(Console.ReadLine(), out int novaCapacidadeSetor)) // Verifica se o número é válido
                         {
                             Console.Write("Novo valor de Desconto para Funcionários no Setor: "); /// Para definir a desconto dos funcionários no Setor
-                            if (decimal.TryParse(Console.ReadLine(), out decimal novaPercentagemDesconto))
+                            if (decimal.TryParse(Console.ReadLine(), out decimal novaPercentagemDesconto)) // Verifica é um número válido
                             {
-                                if (novaPercentagemDesconto >= 0 && novaPercentagemDesconto <= 100)
+                                if (novaPercentagemDesconto >= 0 && novaPercentagemDesconto <= 100) // Verifica se o número está entre 0 e 100
                                 {
                                     List<string> novoTipoVeiculosPermitidos = RetiraTipoVeiculosPermitidos(TiposDeVeiculos);
-                                    if (novoTipoVeiculosPermitidos.Count == 0)
+                                    if (novoTipoVeiculosPermitidos.Count == 0) // Verifica se foi inserido algum tipo de veículo, se não, mostra mensagem de erro
                                     {
-                                        Console.Clear();
+                                        Console.Clear(); // Mensagem de Erro
                                         Console.WriteLine();
                                         Console.WriteLine("\n+------------------------------------+");
                                         Console.WriteLine("|     TIPO DE VEICULO NECESSÁRIO     |");
@@ -607,28 +609,27 @@ namespace TPOO_a26046
                                     }
 
                                     Dictionary<string, decimal> novoPagamentoHora = RetiraPagamentoHora(novoTipoVeiculosPermitidos);
-                                    if (novoPagamentoHora.Count == 0)
+                                    if (novoPagamentoHora.Count == 0) // Verifica se os pagamento para o tipo de veículo é válido
                                     {
-                                        Console.Clear();
+                                        Console.Clear(); // Mensagem de Erro
                                         Console.WriteLine();
                                         Console.WriteLine("\n+------------------------------------+");
                                         Console.WriteLine("|      NECESSÁRIO O CUSTO/HORA!      |");
                                         Console.WriteLine("|                                    |");
                                         Console.WriteLine("| É preciso colocar quanto um número |");
                                         Console.WriteLine("| válido para o custo/hora do setor. |");
-                                        Console.WriteLine("+------------------------------------+");
+                                        Console.WriteLine("+------------------------------------+"); 
                                         return;
                                     }
 
-                                    // Atualiza as informações do setor
-                                    string antigoNomeSetor = nomeSetor;
+                                    string antigoNomeSetor = nomeSetor; // Atualiza as informações do setor
                                     setorExistente.NomeSetor = novoNomeSetor;
                                     setorExistente.Capacidade = novaCapacidadeSetor;
                                     setorExistente.TiposVeiculosPermitidos = novoTipoVeiculosPermitidos;
                                     setorExistente.PagamentoHoraPorTipoVeiculo = novoPagamentoHora;
                                     setorExistente.PercentagemDescontoFuncionarios = novaPercentagemDesconto;
 
-                                    Console.Clear();
+                                    Console.Clear(); // Relatório com as informação novas/alteradas do Setor e o antigo nome do Setor
                                     Console.WriteLine("\n+------------------------------------+");
                                     Console.WriteLine("|      SETOR ALTERADO NO PARQUE      |");
                                     Console.WriteLine("|    DE ESTACIONAMENTO DO HOSPITAL   |");
@@ -649,7 +650,7 @@ namespace TPOO_a26046
                                 }
                                 else
                                 {
-                                    Console.Clear();
+                                    Console.Clear(); // Mensagem de Erro
                                     Console.WriteLine();
                                     Console.WriteLine("\n+------------------------------------+");
                                     Console.WriteLine("|         DESCONTO INVÁLIDO!         |");
@@ -661,7 +662,7 @@ namespace TPOO_a26046
                             }
                             else
                             {
-                                Console.Clear();
+                                Console.Clear(); // Mensagem de Erro
                                 Console.WriteLine();
                                 Console.WriteLine("\n+------------------------------------+");
                                 Console.WriteLine("|         DESCONTO INVÁLIDO!         |");
@@ -673,7 +674,7 @@ namespace TPOO_a26046
                         }
                         else
                         {
-                            Console.Clear();
+                            Console.Clear(); // Mensagem de Erro
                             Console.WriteLine();
                             Console.WriteLine("\n+------------------------------------+");
                             Console.WriteLine("|        CAPACIDADE INVÁLIDA!        |");
@@ -687,7 +688,7 @@ namespace TPOO_a26046
                 }
                 else
                 {
-                    Console.Clear();
+                    Console.Clear(); // Mensagem de Erro
                     Console.WriteLine();
                     Console.WriteLine("\n+------------------------------------+");
                     Console.WriteLine("|      NOME DE SETOR INVÁLIDO !      |");
@@ -699,7 +700,7 @@ namespace TPOO_a26046
             }
             else
             {
-                Console.Clear();
+                Console.Clear(); // Mensagem de Erro
                 Console.WriteLine();
                 Console.WriteLine("\n+-----------------------------------+");
                 Console.WriteLine("|       SETOR NÃO ENCONTRADO !      |");
@@ -732,12 +733,12 @@ namespace TPOO_a26046
                 .Select(int.Parse)
                 .ToList();
             }
-            catch (System.FormatException) /// Detecta se há um FormatException (caracteres sem sem números e o espaço como separador de números)
+            catch (System.FormatException) // Detecta se há um FormatException (caracteres sem sem números e o espaço como separador de números), solução encontrada em stackoverflow.com/questions/12550184/throw-a-format-exception-c-sharp
             {
                 Console.WriteLine("   Os números devem ser separados por um espaço, caracteres não permitidos!!!"); /// Detecta se o valor é inválido, solução encontrada em stackoverflow.com/questions/12269254/how-to-resolve-input-string-was-not-in-a-correct-format-error
-                numTiposVeiculosEscolhaTemp = "999"; ///Define um novo valor para não dar FormatException no finally
+                numTiposVeiculosEscolhaTemp = "999"; // Define um novo valor para não dar FormatException no finally
             }
-            finally   /// Já com o formato correcto e para o valor ser transmitido
+            finally   // Com o formato correcto e para o valor ser transmitido
             {
                 var numerosTiposVeiculosEscolha = numTiposVeiculosEscolhaTemp.Split(' ')
                .Select(str => str.Trim())
@@ -765,13 +766,13 @@ namespace TPOO_a26046
             foreach (var veiculoTipo in tipoVeiculosPermitidos)
             {
                 Console.Write($"Taxa Horária para o tipo de veículo {veiculoTipo}: €");
-                if (decimal.TryParse(Console.ReadLine(), out decimal taxaHora))
+                if (decimal.TryParse(Console.ReadLine(), out decimal taxaHora)) // Verifica se a taxa é válida, se não, mostra mensagem de erro
                 {
                     pagamentoHora[veiculoTipo] = taxaHora;
                 }
                 else
                 {
-                    Console.Clear();
+                    Console.Clear(); // Mensagem de Erro
                     Console.WriteLine();
                     Console.WriteLine("\n+------------------------------------+");
                     Console.WriteLine("|       TAXA HORÁRIA INVÁLIDA!       |");
@@ -788,56 +789,84 @@ namespace TPOO_a26046
         /** Inicio do Estacionamento de um determinado Veículo */
         static void EstacionarVeiculo(ParqueHospitalar parqueHospital, List<string> TiposDeVeiculos)
         {
-            while (true)
+            if (parqueHospital.SetoresParque.Count == 0) // Verifica se já há setores
             {
+                Console.Clear(); // Mensagem de Erro
                 Console.WriteLine();
-                Console.Write("Coloque a Matrícula: ");
-                string matriculaVeiculo = Console.ReadLine();
-                if (!string.IsNullOrWhiteSpace(matriculaVeiculo))
+                Console.WriteLine("\n+-----------------------------------+");
+                Console.WriteLine("|    NÃO HÁ SETORES REGISTADOS !    |");
+                Console.WriteLine("|                                   |");
+                Console.WriteLine("|    Tem que adicionar setores...   |");
+                Console.WriteLine("+-----------------------------------+");
+            }
+            else
+            {
+                while (true)
                 {
-                    if (parqueHospital.VerificarPorMatriculasExistentes(matriculaVeiculo))
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("\n+-----------------------------------+");
+                    Console.WriteLine("|  Estacionar um Veículo no Parque  |");
+                    Console.WriteLine("+-----------------------------------+");
+                    Console.WriteLine();
+                    Console.Write("Coloque a Matrícula: ");
+                    string matriculaVeiculo = Console.ReadLine();
+                    if (!string.IsNullOrWhiteSpace(matriculaVeiculo))
                     {
-                        Console.WriteLine("Essa Matrícula já esta estacionada. Verifique e volte a colocar a Matrícula correta");
-                        continue;
-                    }
-
-                    Console.WriteLine("Tipo de Veículo dos Existentes:");
-                    for (int i = 0; i < TiposDeVeiculos.Count; i++)
-                    {
-                        Console.WriteLine(" " + (i + 1) + " - " + TiposDeVeiculos[i]);
-                    }
-                    Console.Write("Escolha o Tipo de Veiculo: ");
-                    if (int.TryParse(Console.ReadLine(), out int escolhaTipoVeiculo) && escolhaTipoVeiculo >= 1 && escolhaTipoVeiculo <= TiposDeVeiculos.Count)
-                    {
-                        string veiculoTipo = TiposDeVeiculos[escolhaTipoVeiculo - 1];
-
-                        Console.WriteLine("Setores de Estacionamento Disponíveis: ");
-                        
-                        string setorEstaCheio;
-                        for (int i = 0; i < parqueHospital.SetoresParque.Count; i++)
+                        if (parqueHospital.VerificarPorMatriculasExistentes(matriculaVeiculo)) // Verifica se o veículo já está estacionado
                         {
-                            string estadoEstacionamento = parqueHospital.SetoresParque[i].Veiculos.Count >= parqueHospital.SetoresParque[i].Capacidade ? "Está cheio, sem lugares vagos" : "Com lugares vagos, " + (parqueHospital.SetoresParque[i].Capacidade - parqueHospital.SetoresParque[i].Veiculos.Count) + " disponíveis";
-                            Console.WriteLine(" " + (i + 1) + " - " + parqueHospital.SetoresParque[i].NomeSetor + " (" + estadoEstacionamento + ").");
-
+                            Console.WriteLine("Essa Matrícula já esta estacionada. Verifique e volte a colocar a Matrícula correta");
+                            continue;
                         }
 
-                        Console.Write("Escolha o Setor em que deseja estacionar: ");
-                        if (int.TryParse(Console.ReadLine(), out int escolhaSetor) && escolhaSetor >= 1 && escolhaSetor <= parqueHospital.SetoresParque.Count)
+                        Console.WriteLine("Tipo de Veículo dos Existentes:");
+                        for (int i = 0; i < TiposDeVeiculos.Count; i++)
                         {
-                            Veiculo veiculo = new Veiculo
+                            Console.WriteLine(" " + (i + 1) + " - " + TiposDeVeiculos[i]);
+                        }
+                        Console.Write("Escolha o Tipo de Veiculo: ");
+                        if (int.TryParse(Console.ReadLine(), out int escolhaTipoVeiculo) && escolhaTipoVeiculo >= 1 && escolhaTipoVeiculo <= TiposDeVeiculos.Count) // Verifica se o tipo de veículos é válido
+                        {
+                            string veiculoTipo = TiposDeVeiculos[escolhaTipoVeiculo - 1];
+
+                            Console.WriteLine("Setores de Estacionamento Disponíveis: ");
+
+                            for (int i = 0; i < parqueHospital.SetoresParque.Count; i++)
                             {
-                                MatriculaVeiculo = matriculaVeiculo,
-                                VeiculoTipo = veiculoTipo,
-                            };
-                            parqueHospital.SetoresParque[escolhaSetor - 1].EstacionaVeiculo(veiculo);
-                            break;
+                                string estadoEstacionamento = parqueHospital.SetoresParque[i].Veiculos.Count >= parqueHospital.SetoresParque[i].Capacidade ? "Está cheio, sem lugares vagos" : "Com lugares vagos, " + (parqueHospital.SetoresParque[i].Capacidade - parqueHospital.SetoresParque[i].Veiculos.Count) + " disponíveis"; // Indica se o parte está cheio ou tem lugares vagos, indicando os lugares vagos
+                                Console.WriteLine(" " + (i + 1) + " - " + parqueHospital.SetoresParque[i].NomeSetor + " (" + estadoEstacionamento + ").");
+
+                            }
+
+                            Console.Write("Escolha o Setor em que deseja estacionar: ");
+                            if (int.TryParse(Console.ReadLine(), out int escolhaSetor) && escolhaSetor >= 1 && escolhaSetor <= parqueHospital.SetoresParque.Count) // Verifica se o setor é válido
+                            {
+                                Veiculo veiculo = new Veiculo
+                                {
+                                    MatriculaVeiculo = matriculaVeiculo,
+                                    VeiculoTipo = veiculoTipo,
+                                };
+                                parqueHospital.SetoresParque[escolhaSetor - 1].EstacionaVeiculo(veiculo); // Estaciona o Veículo
+                                break;
+                            }
+                            else
+                            {
+                                Console.Clear(); // Mensagem de Erro
+                                Console.WriteLine();
+                                Console.WriteLine("\n+------------------------------------+");
+                                Console.WriteLine("|      OPÇÃO DE SETOR INVÁLIDA!      |");
+                                Console.WriteLine("|                                    |");
+                                Console.WriteLine("|  A opção que escolheu é inválida!  |");
+                                Console.WriteLine("|  Escolha uma oção válida da lista. |");
+                                Console.WriteLine("+------------------------------------+");
+                            }
                         }
                         else
                         {
-                            Console.Clear();
+                            Console.Clear(); // Mensagem de Erro
                             Console.WriteLine();
                             Console.WriteLine("\n+------------------------------------+");
-                            Console.WriteLine("|      OPÇÃO DE SETOR INVÁLIDA!      |");
+                            Console.WriteLine("|     TIPO DE VEICULO INVÁLIDO !     |");
                             Console.WriteLine("|                                    |");
                             Console.WriteLine("|  A opção que escolheu é inválida!  |");
                             Console.WriteLine("|  Escolha uma oção válida da lista. |");
@@ -846,74 +875,76 @@ namespace TPOO_a26046
                     }
                     else
                     {
-                        Console.Clear();
+                        Console.Clear(); // Mensagem de Erro
                         Console.WriteLine();
-                        Console.WriteLine("\n+------------------------------------+");
-                        Console.WriteLine("|     TIPO DE VEICULO INVÁLIDO !     |");
-                        Console.WriteLine("|                                    |");
-                        Console.WriteLine("|  A opção que escolheu é inválida!  |");
-                        Console.WriteLine("|  Escolha uma oção válida da lista. |");
-                        Console.WriteLine("+------------------------------------+"); 
+                        Console.WriteLine("\n+-----------------------------------+");
+                        Console.WriteLine("|        MATRÍCULA INVÁLIDA!        |");
+                        Console.WriteLine("|                                   |");
+                        Console.WriteLine("|   O campo da matrícula não pode   |");
+                        Console.WriteLine("|  estar vazio adicione matrícula.  |");
+                        Console.WriteLine("+-----------------------------------+");
                     }
-                }
-                else
-                {
-                    Console.Clear();
-                    Console.WriteLine();
-                    Console.WriteLine("\n+-----------------------------------+");
-                    Console.WriteLine("|        MATRÍCULA INVÁLIDA!        |");
-                    Console.WriteLine("|                                   |");
-                    Console.WriteLine("|   O campo da matrícula não pode   |");
-                    Console.WriteLine("|  estar vazio adicione matrícula.  |");
-                    Console.WriteLine("+-----------------------------------+");
                 }
             }
         }
 
-        /// Fim do Estacionamento de um determinado veículo
+        /** Fim do Estacionamento de um determinado veículo */
         static void RemoverVeiculo(ParqueHospitalar parqueHospital)
         {
-            while (true)
+            if (parqueHospital.SetoresParque.Count == 0) // Verifica se já há setores
             {
+                Console.Clear(); // Mensagem de Erro
                 Console.WriteLine();
-                Console.Write("Matrícula do veiculo a remover: ");
-                string matriculaRemove = Console.ReadLine();
-                if (!string.IsNullOrWhiteSpace(matriculaRemove))
-                {
-                    bool matriculaEncontrada = false;
-
-                    foreach (var setor in parqueHospital.SetoresParque)
-                    {
-                        setor.FimEstacionamentoVeiculo(matriculaRemove, setor.NomeSetor, parqueHospital);
-                    }
-
-
-                    if (!parqueHospital.VeiculoRemovido)
-                    {
-                        Console.Clear();
-                        Console.WriteLine();
-                        Console.WriteLine();
-                        Console.WriteLine("\n+-------------------------------------------+");
-                        Console.WriteLine("|   NÃO FOI ENCONTRADO NENHUM VEÍCULO NOS   |");
-                        Console.WriteLine($"|  SETORES COM A MATRÍCULA: {matriculaRemove,-14}  |");
-                        Console.WriteLine("+---------------------+---------------------+");
-                        parqueHospital.VeiculoRemovido = false;
-                    }
-                    break;
-                    
-                }
-                else
+                Console.WriteLine("\n+-----------------------------------+");
+                Console.WriteLine("|    NÃO HÁ SETORES REGISTADOS !    |");
+                Console.WriteLine("|                                   |");
+                Console.WriteLine("|    Tem que adicionar setores...   |");
+                Console.WriteLine("+-----------------------------------+");
+            }
+            else
+            {
+                while (true)
                 {
                     Console.Clear();
                     Console.WriteLine();
                     Console.WriteLine("\n+-----------------------------------+");
-                    Console.WriteLine("|        MATRÍCULA INVÁLIDA!        |");
-                    Console.WriteLine("|                                   |");
-                    Console.WriteLine("|   O campo da matrícula não pode   |");
-                    Console.WriteLine("|  estar vazio adicione matrícula.  |");
+                    Console.WriteLine("| Remover Veículo do Estacionamento |");
                     Console.WriteLine("+-----------------------------------+");
+                    Console.WriteLine();
+                    Console.Write("Matrícula do veiculo a remover: ");
+                    string matriculaRemove = Console.ReadLine();
+                    if (!string.IsNullOrWhiteSpace(matriculaRemove)) // Verifica se a matrícula não está vazia
+                    {
+                        foreach (var setor in parqueHospital.SetoresParque)
+                        {
+                            setor.FimEstacionamentoVeiculo(matriculaRemove, setor.NomeSetor, parqueHospital); // Remove o veículo do setor, fim do estacionamento
+                        }
+
+                        if (!parqueHospital.VeiculoRemovido) // Verifica se o Veículo foi removido, se false, mostra mensagem de erro
+                        {
+                            Console.Clear(); // Mensagem de Erro
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            Console.WriteLine("\n+-------------------------------------------+");
+                            Console.WriteLine("|   NÃO FOI ENCONTRADO NENHUM VEÍCULO NOS   |");
+                            Console.WriteLine($"|  SETORES COM A MATRÍCULA: {matriculaRemove,-14}  |");
+                            Console.WriteLine("+---------------------+---------------------+");
+                            parqueHospital.VeiculoRemovido = false; // Reinicia o indicador de veículo removido para false
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        Console.Clear(); // Mensagem de Erro
+                        Console.WriteLine();
+                        Console.WriteLine("\n+-----------------------------------+");
+                        Console.WriteLine("|        MATRÍCULA INVÁLIDA!        |");
+                        Console.WriteLine("|                                   |");
+                        Console.WriteLine("|   O campo da matrícula não pode   |");
+                        Console.WriteLine("|  estar vazio adicione matrícula.  |");
+                        Console.WriteLine("+-----------------------------------+");
+                    }
                 }
-              
             }
         }
 
@@ -928,7 +959,7 @@ namespace TPOO_a26046
             Console.WriteLine("|  Nome do Setor   | Capacidade | Estacionados | Vagos  | Cheio? | Receita Total |");
             Console.WriteLine("+--------------------------------------------------------------------------------+");
 
-            if (parqueHospital.SetoresParque.Count == 0)
+            if (parqueHospital.SetoresParque.Count == 0) // Verifica se há setores registados no Parque, se não há, mostra mensagem a indicar que não há setores
             {
                 Console.WriteLine("|                   Ainda não Existem Setores de Estacionamento                  |");
                 Console.WriteLine("+--------------------------------------------------------------------------------+");
@@ -936,11 +967,10 @@ namespace TPOO_a26046
             }
             else
             {
-                string estaCheio;
+                string estaCheio; // Para guardar valor de "Sim" e "Não"
                 foreach (var setorEstat in parqueHospital.SetoresParque)
                 {
-                    //Transformar um valor booleano em "Sim" ou "Não" para indicar se o sector está cheio
-                    if (setorEstat.SetorCheio())
+                    if (setorEstat.SetorCheio()) // Transformar um valor booleano em string  de "Sim" ou "Não" para indicar se o setor está cheio
                     {
                         estaCheio = "Sim";
                     }
@@ -960,9 +990,9 @@ namespace TPOO_a26046
         static void MostrarHistoricoVeiculo(ParqueHospitalar parqueHospital)
         {
             Console.Clear();
-            if (parqueHospital.SetoresParque.Count == 0)
+            if (parqueHospital.SetoresParque.Count == 0) // Verifica se há setores
             {
-                Console.WriteLine();
+                Console.WriteLine(); // Mensagem de Erro
                 Console.WriteLine("\n+----------------------------------------+");
                 Console.WriteLine("|      Histórico de Estacionamento       |");
                 Console.WriteLine("+----------------------------------------+");
@@ -973,10 +1003,15 @@ namespace TPOO_a26046
             else
             {
                 bool encontradaMatrícula = false;
+                Console.Clear();
+                Console.WriteLine();
+                Console.WriteLine("\n+----------------------------------------+");
+                Console.WriteLine("|      Histórico de Estacionamento       |");
+                Console.WriteLine("+----------------------------------------+");
                 Console.WriteLine();
                 Console.Write("Entre a Matrícula: ");
                 string matriculaVeiculoHist = Console.ReadLine();
-                if (!string.IsNullOrWhiteSpace(matriculaVeiculoHist))
+                if (!string.IsNullOrWhiteSpace(matriculaVeiculoHist)) // Verifica se a matrícula está vazia
                 {
                     Console.WriteLine();
                     Console.WriteLine("\n+-------------------------------------------------------------------------------------+");
@@ -986,7 +1021,7 @@ namespace TPOO_a26046
                     Console.WriteLine("+-------------------------------------------------------------------------------------+");
                     foreach (var setorEst in parqueHospital.SetoresParque)
                     {
-                        bool setorNaoListado = true; /// Evita duplicação de dados listados
+                        bool setorNaoListado = true; // Para evitar duplicação de dados listados
                         foreach (var registoEst in setorEst.HistoricoParque)
                         {
                             if (registoEst.Veiculo.MatriculaVeiculo == matriculaVeiculoHist)
@@ -1005,7 +1040,7 @@ namespace TPOO_a26046
                             }
                         }
                     }
-                    if (!encontradaMatrícula)
+                    if (!encontradaMatrícula) // Verifica se a matrícula foi encontrada, se false mostra mensagem a indicar que não existe histórico
                     {
                         Console.WriteLine($"|    Sem Histórico de Estacionamento para a matrícula {matriculaVeiculoHist,-16}   |");
                     }
@@ -1013,7 +1048,7 @@ namespace TPOO_a26046
                 }
                 else
                 {
-                    Console.Clear();
+                    Console.Clear(); // Mensagem de Erro
                     Console.WriteLine();
                     Console.WriteLine("\n+-----------------------------------+");
                     Console.WriteLine("|        MATRÍCULA INVÁLIDA!        |");
@@ -1036,7 +1071,7 @@ namespace TPOO_a26046
             Console.WriteLine("|   Total de Receitas do Parque  |");
             Console.WriteLine("+--------------------------------+");
 
-            if (parqueHospital.SetoresParque.Count == 0)
+            if (parqueHospital.SetoresParque.Count == 0) // Verifica se já há pagamentos para determinada matrícula
             {
                 Console.WriteLine("| Ainda sem pagamentos efetuados |");
                 Console.WriteLine("+--------------------------------+");
@@ -1044,10 +1079,9 @@ namespace TPOO_a26046
             }
             else
             {
-                /// Percorre todos os setores para calcular a o total das taxas pagas no Parque
-                foreach (var setorEstat in parqueHospital.SetoresParque)
+                foreach (var setorEstat in parqueHospital.SetoresParque) // Percorre todos os setores para calcular a o total das taxas pagas no Parque
                 {
-                    totalPagamentos += setorEstat.CalcularTotalTaxaEstacionamento();
+                    totalPagamentos += setorEstat.CalcularTotalTaxaEstacionamento(); // Acumula a soma de todos os setores
 
                 }
                 Console.WriteLine($"|   {totalPagamentos,24:0.00}€    |");
@@ -1067,7 +1101,7 @@ namespace TPOO_a26046
             Console.WriteLine("|    Matrícula    |    Tipo de Veículo    |");
             Console.WriteLine("+-----------------+-----------------------+");
 
-            int totalVeiculos = 0;
+            int totalVeiculos = 0; // Para guardar o total de veículos encontrados
             foreach (var setor in parqueHospital.SetoresParque)
             {
                 totalVeiculos += setor.Veiculos.Count;
@@ -1077,9 +1111,14 @@ namespace TPOO_a26046
                 }
 
             }
-            if (totalVeiculos == 0)
+            if (totalVeiculos == 0) // Verifica se foram encontrados veículos, se for 0 é porque não há veiculos estacionados
             {
                 Console.WriteLine("|  Sem veículos estacionados nos Setores  |");
+            }
+            if (totalVeiculos > 0) // Verifica se foram encontrados veículos, se for maior que 0, mostra total de veículos estacionados
+            {
+                Console.WriteLine("+-----------------+-----------------------+");
+                Console.WriteLine($"| Total de Veículos Estacionados: {totalVeiculos,6} |");
             }
             Console.WriteLine("+-----------------------------------------+");
             CarregaTecla();
@@ -1089,9 +1128,9 @@ namespace TPOO_a26046
         static void ListaVeiculosPorSetor(ParqueHospitalar parqueHospital)
         {
             Console.Clear();
-            if (parqueHospital.SetoresParque.Count == 0)
+            if (parqueHospital.SetoresParque.Count == 0) // Verifica se há setores, se não mostra erro
             {
-                Console.WriteLine();
+                Console.WriteLine(); // Mensagem de Erro
                 Console.WriteLine("\n+----------------------------------------+");
                 Console.WriteLine("|      Listagem Veículos por Setor       |");
                 Console.WriteLine("+----------------------------------------+");
@@ -1116,13 +1155,13 @@ namespace TPOO_a26046
                 }
                 Console.Write("Escolha o setor: ");
 
-                if (int.TryParse(Console.ReadLine(), out int escolhaSetor) && escolhaSetor >= 1 && escolhaSetor <= parqueHospital.SetoresParque.Count)
+                if (int.TryParse(Console.ReadLine(), out int escolhaSetor) && escolhaSetor >= 1 && escolhaSetor <= parqueHospital.SetoresParque.Count) // Verifica se o setore escolhido é válido
                 {
                     var setorVeiculosEscolha = parqueHospital.SetoresParque[escolhaSetor - 1].Veiculos;
 
-                    if (setorVeiculosEscolha.Count == 0)
+                    if (setorVeiculosEscolha.Count == 0) // Verifica se há veículos no setor escolhido
                     {
-                        Console.WriteLine();
+                        Console.WriteLine(); // Mostra que não há veículos no setor
                         Console.WriteLine("\n+----------------------------------------+");
                         Console.WriteLine("|      Listagem Veículos por Setor       |");
                         Console.WriteLine("+----------------------------------------+");
@@ -1131,7 +1170,7 @@ namespace TPOO_a26046
                     }
                     else
                     {
-                        Console.WriteLine("\n+----------------------------------------+");
+                        Console.WriteLine("\n+----------------------------------------+"); 
                         Console.WriteLine($"| Listagem Veículos no {parqueHospital.SetoresParque[escolhaSetor - 1].NomeSetor,-17} |");
                         Console.WriteLine("+-----------------+----------------------+");
                         Console.WriteLine("|    Matrícula    |   Tipo de Veículo    |");
@@ -1145,7 +1184,7 @@ namespace TPOO_a26046
                 }
                 else
                 {
-                    Console.WriteLine();
+                    Console.WriteLine(); // Mensagem de Erro
                     Console.WriteLine("+------------------------------------------+");
                     Console.WriteLine("| Número de Setor Inválido ou inexistente  |");
                     Console.WriteLine("+------------------------------------------+");
@@ -1158,60 +1197,131 @@ namespace TPOO_a26046
         static void CarregaTecla()
         {
             Console.WriteLine();
-            Console.Write("Carregue em qualquer tecla para seguir...");
-            Console.ReadKey();
+            Console.Write("Carregue em qualquer tecla para continuar...");
+            Console.ReadKey(); // Aguarda que se toque em qualquer tecla para continuar
         }
 
         /** Adiciona os dados de determinada matrícula de um veículo do funcionário que poderá ter direito ao descontos oferecidos no parque de estacionamento */
         static void AdicionarVeiculoFuncionario(ParqueHospitalar parqueHospital)
         {
-            Console.WriteLine("\nAdicionar Funcionário");
-
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("\n+-----------------------------------+");
+            Console.WriteLine("| Adicionar Funcionário do Hospital |");
+            Console.WriteLine("+-----------------------------------+");
+            Console.WriteLine();
+           
             Console.Write("Nome do Funcionário: ");
             string nomeFuncionario = Console.ReadLine();
 
-            Console.Write("Profissão do Funcionário: ");
-            string profissaoFuncionario = Console.ReadLine();
-                
-            Console.Write("Matrícula do Funcionário: ");
-            string matriculaFuncionario = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(nomeFuncionario)) // Verifica se o nome do funcionário não está vazio, se estiver mostra mensagem de erro
+            {
+                Console.Write("Profissão do Funcionário: ");
+                string profissaoFuncionario = Console.ReadLine();
 
-            VeiculoFuncionario novoVeiculoFuncionario = new VeiculoFuncionario(nomeFuncionario, matriculaFuncionario, profissaoFuncionario);
-            
-           parqueHospital.AdicionaVeiculoFuncionario(novoVeiculoFuncionario);
+                if (!string.IsNullOrWhiteSpace(profissaoFuncionario)) // Verifica se a profissão do funcionário não está vazio, se estiver mostra mensagem de erro
+                {
+                    Console.Write("Matrícula do Funcionário: ");
+                    string matriculaFuncionario = Console.ReadLine();
+
+                    if (!string.IsNullOrWhiteSpace(matriculaFuncionario)) // Verifica se  a matrícula do veículo do funcionário não está vazio, se estiver mostra mensagem de erro
+                    {
+                        VeiculoFuncionario novoVeiculoFuncionario = new VeiculoFuncionario(nomeFuncionario, matriculaFuncionario, profissaoFuncionario);
+
+                        parqueHospital.AdicionaVeiculoFuncionario(novoVeiculoFuncionario); // Adiciona Funcionário
+                    }
+                    else
+                    {
+                        Console.Clear(); // Mensagem de Erro
+                        Console.WriteLine();
+                        Console.WriteLine("\n+------------------------------------+");
+                        Console.WriteLine("|   MATRÍCULA DO VEÍCULO INVÁLIDA!   |");
+                        Console.WriteLine("|                                    |");
+                        Console.WriteLine("|     A matrícula do veículo do      |");
+                        Console.WriteLine("| funcionário não pode estar vazia.  |");
+                        Console.WriteLine("+------------------------------------+");
+                    }
+                }
+                else
+                {
+                    Console.Clear(); // Mensagem de Erro
+                    Console.WriteLine();
+                    Console.WriteLine("\n+------------------------------------+");
+                    Console.WriteLine("| PROFISSÃO DE FUNCIONÁRIO INVÁLIDA! |");
+                    Console.WriteLine("|                                    |");
+                    Console.WriteLine("|   A profissão do funcionário não   |");
+                    Console.WriteLine("|         pode estar vazia...        |");
+                    Console.WriteLine("+------------------------------------+");
+                }
+            }
+            else
+            {
+                Console.Clear(); // Mensagem de Erro
+                Console.WriteLine();
+                Console.WriteLine("\n+------------------------------------+");
+                Console.WriteLine("|   NOME DE FUNCIONÁRIO INVÁLIDO !   |");
+                Console.WriteLine("|                                    |");
+                Console.WriteLine("|   O nome do funcionário não pode   |");
+                Console.WriteLine("|            estar vazio...          |");
+                Console.WriteLine("+------------------------------------+");
+            }
+                    
         }
 
         /** Altera os dados de determinada matrícula de um veículo do funcionário que poderá ter direito ao descontos oferecidos no parque de estacionamento */
         static void AlterarVeiculoFuncionario(ParqueHospitalar parqueHospital)
         {
-            Console.WriteLine("\nAlterar Dados do Funcionário");
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("\n+-----------------------------------+");
+            Console.WriteLine("|  Alterar Funcionário do Hospital  |");
+            Console.WriteLine("+-----------------------------------+");
+            Console.WriteLine();
             Console.Write("Matrícula do Funcionário a ser alterado: ");
             string matriculaFuncionario = Console.ReadLine();
 
-            parqueHospital.AlteraVeiculoFuncionario(matriculaFuncionario);
+            parqueHospital.AlteraVeiculoFuncionario(matriculaFuncionario); // Altera dados do Funcionário
         }
 
         /** Remove um funcionário e o seu veículo para deixar de ter direito aos descontos oferecidos no parque de estacionamento */
         static void RemoverVeiculoFuncionario(ParqueHospitalar parqueHospital)
         {
-            Console.WriteLine("\nRemover Funcionário");
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("\n+-----------------------------------+");
+            Console.WriteLine("|  Remover Funcionário do Hospital  |");
+            Console.WriteLine("+-----------------------------------+");
+            Console.WriteLine();
 
             Console.Write("Matrícula do Funcionário a ser removido: ");
             string matriculaFuncionario = Console.ReadLine();
-
-            parqueHospital.RemoveVeiculoFuncionario(matriculaFuncionario);
+            if (!string.IsNullOrWhiteSpace(matriculaFuncionario)) // Verifica se a matrícula do veículo do funcionário não está vazio, se estiver mostra mensagem de erro
+            {
+                parqueHospital.RemoveVeiculoFuncionario(matriculaFuncionario); // Remove Funcionário
+            }
+            else
+            {
+                Console.Clear(); // Mensagem de Erro
+                Console.WriteLine();
+                Console.WriteLine("\n+------------------------------------+");
+                Console.WriteLine("|   MATRÍCULA DO VEÍCULO INVÁLIDA!   |");
+                Console.WriteLine("|                                    |");
+                Console.WriteLine("|     A matrícula do veículo do      |");
+                Console.WriteLine("| funcionário não pode estar vazia.  |");
+                Console.WriteLine("+------------------------------------+");
+            }
         }   
 
-        /** Lista todos os funcionários e o seu veículo que pode ter direito aos descontos no parque de estacionamento */
+        /** Lista todos os funcionários e a matrícula veículo que pode ter direito aos descontos no parque de estacionamento */
         static void ListarFuncionarios(ParqueHospitalar parqueHospital)
         {
             
             Console.Clear();
             Console.WriteLine(); 
             Console.WriteLine("\n+----------------------------------------------------------------------------------------------------------+");
-            if (parqueHospital.VeiculosFuncionarios.Count == 0) //Não há funcionários
+            if (parqueHospital.VeiculosFuncionarios.Count == 0) // Verfica se Não há funcionários
             {
-                Console.WriteLine("|        NÃO EXISTEM AINDA FUNCIONÁRIOS COM DIREITO A DESCONTO REGISTADOS NO PARQUE DE ESTACIONAMENTO         |");
+                Console.WriteLine("|       NÃO EXISTEM AINDA FUNCIONÁRIOS COM DIREITO A DESCONTO REGISTADOS NO PARQUE DE ESTACIONAMENTO       |");
             }
             else
             {

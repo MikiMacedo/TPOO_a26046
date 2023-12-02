@@ -22,7 +22,7 @@ namespace TPOO_a26046
         public decimal DescontoAplicado { get; set; }
         public string SetorEstacionado { get; set; } 
 
-        /** Dados finais do Estacionamento do Veículo */
+        /** Dados do Estacionamento do Veículo */
         public RegistoEstacionamento(Veiculo veiculo, DateTime entrada, DateTime saida, decimal taxaEstacionamento, decimal descontoAplicado, string setorEstacionado)
         {
             Veiculo = veiculo;
