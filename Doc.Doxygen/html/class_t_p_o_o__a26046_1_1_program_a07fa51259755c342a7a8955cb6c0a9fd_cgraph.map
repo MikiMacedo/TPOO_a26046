@@ -1,0 +1,31 @@
+<map id="TPOO_a26046.Program.MenuGerirParque" name="TPOO_a26046.Program.MenuGerirParque">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,272,201,315"/>
+<area shape="rect" id="Node000002" href="$class_t_p_o_o__a26046_1_1_program.html#ade98d184d86b9c959cf5033dc0cee5ad" title=" " alt="" coords="249,72,466,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,270,167,199,204,159,247,124,255,119,258,124,250,129,208,163,171,202,120,273"/>
+<area shape="rect" id="Node000006" href="$class_t_p_o_o__a26046_1_1_program.html#a32531dc2402142120b6e73b18fb6e87a" title=" " alt="" coords="249,205,466,248"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="186,269,258,250,259,255,188,274"/>
+<area shape="rect" id="Node000008" href="$class_t_p_o_o__a26046_1_1_program.html#a557792e086a191eb4ff6f7f585e12312" title=" " alt="" coords="257,139,458,181"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="129,269,182,230,247,191,260,185,263,190,250,196,185,234,132,274"/>
+<area shape="rect" id="Node000009" href="$class_t_p_o_o__a26046_1_1_program.html#ab9b31f90f34dba24c9a49717ac439398" title=" " alt="" coords="257,272,458,315"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="201,291,241,291,241,296,201,296"/>
+<area shape="rect" id="Node000011" href="$class_t_p_o_o__a26046_1_1_program.html#af7890ad553ca01ef08b2c90823b730bd" title=" " alt="" coords="253,339,462,381"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="188,313,259,332,258,337,186,318"/>
+<area shape="rect" id="Node000012" href="$class_t_p_o_o__a26046_1_1_program.html#af9317143b99a8f025134d80c9554d659" title=" " alt="" coords="251,405,464,448"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="132,313,185,352,250,391,263,397,260,402,247,396,182,357,129,317"/>
+<area shape="rect" id="Node000013" href="$class_t_p_o_o__a26046_1_1_program.html#ab72b5ed3c125d3107bf4fcae00e07ab8" title=" " alt="" coords="251,472,464,515"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="120,314,171,385,208,424,250,458,258,463,255,467,247,462,204,428,167,388,115,317"/>
+<area shape="rect" id="Node000003" href="$class_t_p_o_o__a26046_1_1_parque_hospitalar.html#abba1196da9fcfe5a7f9a3efe40b01128" title=" " alt="" coords="514,5,727,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="444,69,518,50,520,55,445,74"/>
+<area shape="rect" id="Node000004" href="$class_t_p_o_o__a26046_1_1_program.html#a29dbf2e5480958600e19762d11cb8747" title=" " alt="" coords="522,72,719,115"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="467,91,506,91,506,96,467,96"/>
+<area shape="rect" id="Node000005" href="$class_t_p_o_o__a26046_1_1_program.html#a5e5aee9559157d02b09a745699897010" title=" " alt="" coords="522,139,719,181"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="445,113,520,132,518,137,444,118"/>
+<area shape="rect" id="Node000007" href="$class_t_p_o_o__a26046_1_1_parque_hospitalar.html#aa8e747a705bbad7d704d6c10410225d9" title=" " alt="" coords="514,205,727,248"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="467,224,499,224,499,229,467,229"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="444,135,518,116,520,122,445,141"/>
+<area shape="poly" id="edge9_Node000008_Node000005" title=" " alt="" coords="458,157,506,157,506,163,458,163"/>
+<area shape="rect" id="Node000010" href="$class_t_p_o_o__a26046_1_1_parque_hospitalar.html#a1bdc83540b10db189bba50a601932264" title=" " alt="" coords="514,272,727,315"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="458,291,499,291,499,296,458,296"/>
+<area shape="rect" id="Node000014" href="$class_t_p_o_o__a26046_1_1_parque_hospitalar.html#a7fda48fa5d2c63cb94a38d6899255680" title=" " alt="" coords="514,472,727,515"/>
+<area shape="poly" id="edge15_Node000013_Node000014" title=" " alt="" coords="464,491,498,491,498,496,464,496"/>
+</map>

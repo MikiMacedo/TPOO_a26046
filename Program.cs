@@ -589,7 +589,7 @@ namespace TPOO_a26046
                         Console.Write("Nova Capacidade do Setor: ");
                         if (int.TryParse(Console.ReadLine(), out int novaCapacidadeSetor)) // Verifica se o número é válido
                         {
-                            Console.Write("Novo valor de Desconto para Funcionários no Setor: "); /// Para definir a desconto dos funcionários no Setor
+                            Console.Write("Novo valor de Desconto para Funcionários no Setor: "); // Para definir a desconto dos funcionários no Setor
                             if (decimal.TryParse(Console.ReadLine(), out decimal novaPercentagemDesconto)) // Verifica é um número válido
                             {
                                 if (novaPercentagemDesconto >= 0 && novaPercentagemDesconto <= 100) // Verifica se o número está entre 0 e 100
@@ -735,7 +735,7 @@ namespace TPOO_a26046
             }
             catch (System.FormatException) // Detecta se há um FormatException (caracteres sem sem números e o espaço como separador de números), solução encontrada em stackoverflow.com/questions/12550184/throw-a-format-exception-c-sharp
             {
-                Console.WriteLine("   Os números devem ser separados por um espaço, caracteres não permitidos!!!"); /// Detecta se o valor é inválido, solução encontrada em stackoverflow.com/questions/12269254/how-to-resolve-input-string-was-not-in-a-correct-format-error
+                Console.WriteLine("   Os números devem ser separados por um espaço, caracteres não permitidos!!!"); // Detecta se o valor é inválido, solução encontrada em stackoverflow.com/questions/12269254/how-to-resolve-input-string-was-not-in-a-correct-format-error
                 numTiposVeiculosEscolhaTemp = "999"; // Define um novo valor para não dar FormatException no finally
             }
             finally   // Com o formato correcto e para o valor ser transmitido
