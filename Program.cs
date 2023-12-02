@@ -334,7 +334,14 @@ namespace TPOO_a26046
             {
                 if (parqueHospital.SetoresParque.Any(setor => setor.NomeSetor == nomeSetor))
                 {
-                    Console.WriteLine("Já existe um setor com esse nome, tem que inserir um nome diferente!");
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("\n+------------------------------------+");
+                    Console.WriteLine("|          SETOR JÁ EXISTE!          |");
+                    Console.WriteLine("|                                    |");
+                    Console.WriteLine("|      Tem que inserir um nome,      |");
+                    Console.WriteLine("|      diferente do existente...     |");
+                    Console.WriteLine("+------------------------------------+");
                     return;
                 }
                 else
@@ -350,13 +357,27 @@ namespace TPOO_a26046
                                 List<string> tipoVeiculosPermitidos = RetiraTipoVeiculosPermitidos(TiposDeVeiculos); ///Para definir os tipos de veículos permitidos no Setor
                                 if (tipoVeiculosPermitidos.Count == 0)
                                 {
-                                    Console.WriteLine("Pelo menos um tipo de Veiculo é necessário!");
+                                    Console.Clear();
+                                    Console.WriteLine();
+                                    Console.WriteLine("\n+------------------------------------+");
+                                    Console.WriteLine("|     TIPO DE VEICULO NECESSÁRIO     |");
+                                    Console.WriteLine("|                                    |");
+                                    Console.WriteLine("|   Tem que escolher, pelo menos,    |");
+                                    Console.WriteLine("|       um tipo de veiculo...        |");
+                                    Console.WriteLine("+------------------------------------+");
                                     return;
                                 }
                                 Dictionary<string, decimal> pagamentoHora = RetiraPagamentoHora(tipoVeiculosPermitidos);
                                 if (pagamentoHora.Count == 0)
                                 {
-                                    Console.WriteLine("É preciso colocar quanto custa o estacionamento por Hora!");
+                                    Console.Clear();
+                                    Console.WriteLine();
+                                    Console.WriteLine("\n+------------------------------------+");
+                                    Console.WriteLine("|      NECESSÁRIO O CUSTO/HORA!      |");
+                                    Console.WriteLine("|                                    |");
+                                    Console.WriteLine("| É preciso colocar quanto um número |");
+                                    Console.WriteLine("| válido para o custo/hora do setor. |");
+                                    Console.WriteLine("+------------------------------------+");
                                     return;
                                 }
 
@@ -385,24 +406,51 @@ namespace TPOO_a26046
                             }
                             else
                             {
-                                Console.WriteLine("Desconto inválido, a percentagem deve ser entre 0 % e 100 %");
+                                Console.Clear();
+                                Console.WriteLine();
+                                Console.WriteLine("\n+------------------------------------+");
+                                Console.WriteLine("|         DESCONTO INVÁLIDO!         |");
+                                Console.WriteLine("|                                    |");
+                                Console.WriteLine("|     A percentagem de desconto      |");
+                                Console.WriteLine("|    deve ser entre 0% e 100%...     |");
+                                Console.WriteLine("+------------------------------------+");
                             }
                         }
                         else
                         {
-                            Console.WriteLine("Percentagem de Desconto inválido, coloque um valor númerico válido entre 0 e 100");
+                            Console.Clear();
+                            Console.WriteLine();
+                            Console.WriteLine("\n+------------------------------------+");
+                            Console.WriteLine("|         DESCONTO INVÁLIDO!         |");
+                            Console.WriteLine("|                                    |");
+                            Console.WriteLine("|   A percentagem de desconto deve   |");
+                            Console.WriteLine("|   número válido entre 0 e 100...   |");
+                            Console.WriteLine("+------------------------------------+");
                         }
                     }
-
                     else
                     {
-                        Console.WriteLine("Capacidade Inválida. Por favor, coloque um valor númerico válido");
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("\n+------------------------------------+");
+                        Console.WriteLine("|        CAPACIDADE INVÁLIDA!        |");
+                        Console.WriteLine("|                                    |");
+                        Console.WriteLine("|     A capacidade é inválida...     |");
+                        Console.WriteLine("|      Coloque número válido...      |");
+                        Console.WriteLine("+------------------------------------+");
                     }
                 }
             }
             else
             {
-                Console.WriteLine("O Nome do Setor não pode estar vazio.");
+                Console.Clear();
+                Console.WriteLine();
+                Console.WriteLine("\n+------------------------------------+");
+                Console.WriteLine("|      NOME DE SETOR INVÁLIDO !      |");
+                Console.WriteLine("|                                    |");
+                Console.WriteLine("|   O nome do setor não pode estar   |");
+                Console.WriteLine("|  vazio, escreva um nome válido...  |");
+                Console.WriteLine("+------------------------------------+");
             }
         }
 
@@ -563,12 +611,12 @@ namespace TPOO_a26046
                                     {
                                         Console.Clear();
                                         Console.WriteLine();
-                                        Console.WriteLine("\n+-------------------------------------+");
-                                        Console.WriteLine("|      NECESSÁRIO O CUSTO/HORA !      |");
-                                        Console.WriteLine("|                                     |");
-                                        Console.WriteLine("|  É preciso colocar quanto custa o   |");
-                                        Console.WriteLine("|     estacionamento por hora...      |");
-                                        Console.WriteLine("+-------------------------------------+");
+                                        Console.WriteLine("\n+------------------------------------+");
+                                        Console.WriteLine("|      NECESSÁRIO O CUSTO/HORA!      |");
+                                        Console.WriteLine("|                                    |");
+                                        Console.WriteLine("| É preciso colocar quanto um número |");
+                                        Console.WriteLine("| válido para o custo/hora do setor. |");
+                                        Console.WriteLine("+------------------------------------+");
                                         return;
                                     }
 
@@ -658,7 +706,6 @@ namespace TPOO_a26046
                 Console.WriteLine("|                                   |");
                 Console.WriteLine("|    Verifique o nome do setor...   |");
                 Console.WriteLine("+-----------------------------------+");
-                Console.WriteLine("Setor não encontrado. Verifique o nome do setor.");
             }
         }
 
@@ -724,7 +771,14 @@ namespace TPOO_a26046
                 }
                 else
                 {
-                    Console.WriteLine($"Taxa Horária inválida para {veiculoTipo}. Adicionar um número válido.");
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("\n+------------------------------------+");
+                    Console.WriteLine("|       TAXA HORÁRIA INVÁLIDA!       |");
+                    Console.WriteLine("|                                    |");
+                    Console.WriteLine("|   Adicionar um número válido para  |");
+                    Console.WriteLine($"|   os veículos tipo {veiculoTipo,-13}   |");
+                    Console.WriteLine("+------------------------------------+"); 
                 }
             }
 
@@ -780,17 +834,38 @@ namespace TPOO_a26046
                         }
                         else
                         {
-                            Console.WriteLine("Número de Setor Inválido");
+                            Console.Clear();
+                            Console.WriteLine();
+                            Console.WriteLine("\n+------------------------------------+");
+                            Console.WriteLine("|      OPÇÃO DE SETOR INVÁLIDA!      |");
+                            Console.WriteLine("|                                    |");
+                            Console.WriteLine("|  A opção que escolheu é inválida!  |");
+                            Console.WriteLine("|  Escolha uma oção válida da lista. |");
+                            Console.WriteLine("+------------------------------------+");
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Tipo veiculo inválido");
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("\n+------------------------------------+");
+                        Console.WriteLine("|     TIPO DE VEICULO INVÁLIDO !     |");
+                        Console.WriteLine("|                                    |");
+                        Console.WriteLine("|  A opção que escolheu é inválida!  |");
+                        Console.WriteLine("|  Escolha uma oção válida da lista. |");
+                        Console.WriteLine("+------------------------------------+"); 
                     }
                 }
                 else
                 {
-                    Console.WriteLine("O Campo da Matrícula não pode estar vazio, adicione a Matrícula");
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("\n+-----------------------------------+");
+                    Console.WriteLine("|        MATRÍCULA INVÁLIDA!        |");
+                    Console.WriteLine("|                                   |");
+                    Console.WriteLine("|   O campo da matrícula não pode   |");
+                    Console.WriteLine("|  estar vazio adicione matrícula.  |");
+                    Console.WriteLine("+-----------------------------------+");
                 }
             }
         }
@@ -829,7 +904,14 @@ namespace TPOO_a26046
                 }
                 else
                 {
-                    Console.WriteLine("O Campo da Matrícula não pode estar vazio, adicione a Matrícula");
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("\n+-----------------------------------+");
+                    Console.WriteLine("|        MATRÍCULA INVÁLIDA!        |");
+                    Console.WriteLine("|                                   |");
+                    Console.WriteLine("|   O campo da matrícula não pode   |");
+                    Console.WriteLine("|  estar vazio adicione matrícula.  |");
+                    Console.WriteLine("+-----------------------------------+");
                 }
               
             }
@@ -931,7 +1013,14 @@ namespace TPOO_a26046
                 }
                 else
                 {
-                    Console.WriteLine("A matrícula não pode estar vazia");
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("\n+-----------------------------------+");
+                    Console.WriteLine("|        MATRÍCULA INVÁLIDA!        |");
+                    Console.WriteLine("|                                   |");
+                    Console.WriteLine("|   O campo da matrícula não pode   |");
+                    Console.WriteLine("|  estar vazio adicione matrícula.  |");
+                    Console.WriteLine("+-----------------------------------+");
                 }
                 CarregaTecla();
             }
