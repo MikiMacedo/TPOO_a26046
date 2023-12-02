@@ -3,12 +3,12 @@ Autor: Miguel António Costa Macedo, aluno 26046
 
 Sistema capaz de gerir um parque de estacionamento de um Hospital, com múltiplos setores de estacionamento...
 
-Diagrama de Classes do Trabalho
+![#f03c15]Diagrama de Classes do Trabalho `#f03c15`
 
 ![alt text](https://github.com/MikiMacedo/TPOO_a26046/blob/main/Diagrama%20de%20Classes%20yUML%2002-12-2023.png?raw=true)
 
 
-Menus do Sistema de Gestão do Parque de Estaciamento do Hospital
+![#f03c15]Menus do Sistema de Gestão do Parque de Estaciamento do Hospital`#f03c15`
 
   0 - Menu Principal:
   
