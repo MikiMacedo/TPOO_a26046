@@ -1,7 +1,7 @@
 # Trabalho de Programação Orientada a Objetos 
 
 Sistema capaz de gerir um parque de estacionamento de um Hospital, com múltiplos setores de estacionamento...
-  0 - Menu Principal:<span style="color: green">
+  0 - Menu Principal:
           +----------------------------------------------------------------+
           |    Estatísticas do Parque de Estacionamento do Hospital        |
           +----------------------------------------------------------------+
@@ -18,9 +18,9 @@ Sistema capaz de gerir um parque de estacionamento de um Hospital, com múltiplo
           | 3 |  Menu de Estatísticas                                      |
           | 0 |  Sair do Sistema                                           |
           +---+------------------------------------------------------------+
-           Escolhe uma opção de 0 a 3:</span>
+           Escolhe uma opção de 0 a 3:
 
-  1 - Menu de Gestão<span style="color: green">
+  1 - Menu de Gestão
           +---------------------------------------------------------+
           |  Menu de Gestão                                         |
           +---+-----------------------------------------------------+
@@ -32,9 +32,9 @@ Sistema capaz de gerir um parque de estacionamento de um Hospital, com múltiplo
           | 6 |  Alterar Veículo de Funcinário para Desconto        |
           | 0 |  Voltar ao Menu Principal                           |
           +---+-----------------------------------------------------+
-          Escolhe uma opção de 0 a 3:</span>
+          Escolhe uma opção de 0 a 3:
 
-  2 - Menu de Utilizador<span style="color: green">
+  2 - Menu de Utilizador
           +---------------------------------------------------------+
           |  Menu de Utilizador                                     |
           +---+-----------------------------------------------------+
@@ -44,7 +44,7 @@ Sistema capaz de gerir um parque de estacionamento de um Hospital, com múltiplo
           +---+-----------------------------------------------------+
           Escolhe uma opção de 0 a 2:</span>
 
-  3 - Menu de Estatísticas<span style="color: green">
+  3 - Menu de Estatísticas
           +---------------------------------------------------------+
           |  Menu de Estatísticas do Parque                         |
           +---+-----------------------------------------------------+
@@ -55,9 +55,9 @@ Sistema capaz de gerir um parque de estacionamento de um Hospital, com múltiplo
           | 5 |  Listar Funcionários com direito a desconto         |
           | 0 |  Voltar ao Menu de Gestão                           |
           +---+-----------------------------------------------------+
-          Escolhe uma opção de 0 a 4:</span>
+          Escolhe uma opção de 0 a 4:
 
-  3.2 - Menu de Estatísticas dos Veículos<span style="color: green">
+  3.2 - Menu de Estatísticas dos Veículos
           +---------------------------------------------------------+
           |  Menu de Estatísticas dos Veículos                      |
           +---+-----------------------------------------------------+
@@ -65,7 +65,7 @@ Sistema capaz de gerir um parque de estacionamento de um Hospital, com múltiplo
           | 2 |  Listar Veiculos por Setor                          |
           | 0 |  Voltar ao Menu de Estatísticas                     |
           +---+-----------------------------------------------------+
-          Escolhe uma opção de 0 a 2:</span>
+          Escolhe uma opção de 0 a 2:
 
 
 
