@@ -91,11 +91,11 @@ namespace TPOO_a26046
             Console.WriteLine("\n+----------------------------------+");
             Console.WriteLine($"|    Ticket de Estacionamento      |");
             Console.WriteLine("+------------+---------------------+");
-            Console.WriteLine($"| Setor     | {NomeSetor,-19} |");
+            Console.WriteLine($"| Setor      | {NomeSetor,-19} |");
             Console.WriteLine("+------------+---------------------+");
-            Console.WriteLine($"| Entrada   | {DateTime.Now,-19} |");
+            Console.WriteLine($"| Entrada    | {DateTime.Now,-19} |");
             Console.WriteLine("+------------+---------------------+");
-            Console.WriteLine($"| Taxa/Hora | {veiculoEstaciona.TaxaEstacionamento,-19} |"); 
+            Console.WriteLine($"| Taxa/Hora  | {PagamentoHoraPorTipoVeiculo[veiculoEstaciona.VeiculoTipo],18:0,000.00}€ |"); 
             Console.WriteLine("+------------+---------------------+");
         }
 
@@ -137,7 +137,7 @@ namespace TPOO_a26046
                 Console.WriteLine("+---------------------+---------------------+");
                 Console.WriteLine("|        Setor        |         Taxa        |");
                 Console.WriteLine("+---------------------+---------------------+");
-                Console.WriteLine($"| {NomeSetor,-19} |      €{veiculoRemover.TaxaEstacionamento,-13:0.00} |");
+                Console.WriteLine($"| {NomeSetor,-19} |      €{veiculoRemover.TaxaEstacionamento,-13:0,000.00} |");
                 Console.WriteLine("+---------------------+---------------------+");
                 Console.WriteLine("|       Entrada       |         Saída       |");
                 Console.WriteLine("+---------------------+---------------------+");
@@ -148,7 +148,7 @@ namespace TPOO_a26046
                 {
                     Console.WriteLine("| % Desconto aplicado |   Taxa Descontada   |");
                     Console.WriteLine("+---------------------+---------------------+");
-                    Console.WriteLine($"|        {PercentagemDescontoFuncionarios,3} %        |    {(horasEstacionado * PagamentoHoraPorTipoVeiculo[veiculoRemover.VeiculoTipo]) - veiculoRemover.TaxaEstacionamento,12:0.00}€    |");
+                    Console.WriteLine($"|        {PercentagemDescontoFuncionarios,3} %        |    {(horasEstacionado * PagamentoHoraPorTipoVeiculo[veiculoRemover.VeiculoTipo]) - veiculoRemover.TaxaEstacionamento,12:0,000.00}€    |");
                     Console.WriteLine("+---------------------+---------------------+");
                 }
             }
