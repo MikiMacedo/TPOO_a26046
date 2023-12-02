@@ -2,6 +2,7 @@
 
 Sistema capaz de gerir um parque de estacionamento de um Hospital, com múltiplos setores de estacionamento...
   0 - Menu Principal:
+  
           +----------------------------------------------------------------+
           |    Estatísticas do Parque de Estacionamento do Hospital        |
           +----------------------------------------------------------------+
@@ -21,6 +22,7 @@ Sistema capaz de gerir um parque de estacionamento de um Hospital, com múltiplo
            Escolhe uma opção de 0 a 3:
 
   1 - Menu de Gestão
+  
           +---------------------------------------------------------+
           |  Menu de Gestão                                         |
           +---+-----------------------------------------------------+
@@ -35,6 +37,7 @@ Sistema capaz de gerir um parque de estacionamento de um Hospital, com múltiplo
           Escolhe uma opção de 0 a 3:
 
   2 - Menu de Utilizador
+  
           +---------------------------------------------------------+
           |  Menu de Utilizador                                     |
           +---+-----------------------------------------------------+
@@ -45,6 +48,7 @@ Sistema capaz de gerir um parque de estacionamento de um Hospital, com múltiplo
           Escolhe uma opção de 0 a 2:</span>
 
   3 - Menu de Estatísticas
+  
           +---------------------------------------------------------+
           |  Menu de Estatísticas do Parque                         |
           +---+-----------------------------------------------------+
@@ -58,6 +62,7 @@ Sistema capaz de gerir um parque de estacionamento de um Hospital, com múltiplo
           Escolhe uma opção de 0 a 4:
 
   3.2 - Menu de Estatísticas dos Veículos
+  
           +---------------------------------------------------------+
           |  Menu de Estatísticas dos Veículos                      |
           +---+-----------------------------------------------------+
